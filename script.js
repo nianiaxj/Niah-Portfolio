@@ -274,7 +274,9 @@ function openRoomModal(room) {
       },
       {
         title: 'Red Chords',
-        src: 'https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776887053/WhatsApp_Image_2026-04-09_at_11.58.19_1_kdokil.jpg'
+        src: 'https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776887053/WhatsApp_Image_2026-04-09_at_11.58.19_1_kdokil.jpg',
+        noCaption: true,
+        fitFrame: true
       }
     ];
     const escapeAttr = (s) => String(s).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -282,10 +284,10 @@ function openRoomModal(room) {
       <div class="art-grid">
         ${artworks.map((a) => a ? `
           <figure class="art-frame">
-            <div class="art-frame-inner has-image">
-              <img src="${escapeAttr(a.src)}" alt="${escapeAttr(a.title)}" loading="lazy" />
+            <div class="art-frame-inner has-image"${a.fitFrame ? ' style="aspect-ratio:auto;height:auto;"' : ''}>
+              <img src="${escapeAttr(a.src)}" alt="${escapeAttr(a.title)}" loading="lazy"${a.fitFrame ? ' style="width:100%;height:auto;object-fit:unset;"' : ''} />
             </div>
-            <figcaption class="art-caption">${escapeAttr(a.title)}</figcaption>
+            ${a.noCaption ? '' : `<figcaption class="art-caption">${escapeAttr(a.title)}</figcaption>`}
           </figure>
         ` : `
           <div class="art-frame">
