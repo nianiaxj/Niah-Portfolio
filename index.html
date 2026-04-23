@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <title>Niah's House</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+  <meta property="og:image" content="assets/opengraph.jpg" />
+  <meta name="description" content="Niah's creative portfolio — content, art, and interactive projects." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ================================================
+     PAPER TEXTURE
+     ================================================ -->
+<div class="paper-texture"></div>
+
+<!-- ================================================
+     CUSTOM CURSOR
+     ================================================ -->
+<img id="custom-cursor" src="https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776934163/Gemini_Generated_Image_wz4n5zwz4n5zwz4n-removebg-preview_1776837947273_hve6jy.png" alt="" aria-hidden="true" />
+
+<!-- ================================================
+     CLOUD LAYER
+     ================================================ -->
+<div class="cloud-layer">
+  <img src="https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776934187/cloud_tebsld.png" alt="" class="cloud cloud-1" loading="lazy" />
+  <img src="https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776934187/cloud_tebsld.png" alt="" class="cloud cloud-2" loading="lazy" />
+  <img src="https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776934187/cloud_tebsld.png" alt="" class="cloud cloud-3" loading="lazy" />
+</div>
+
+<!-- ================================================
+     FLOATING NAV
+     ================================================ -->
+<nav id="floating-nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <button class="nav-btn active" data-target="welcome">Welcome</button>
+    <button class="nav-btn" data-target="about">About</button>
+    <button class="nav-btn" data-target="work">Work</button>
+    <button class="nav-btn" data-target="projects">Projects</button>
+    <button class="nav-btn" data-target="contact">Contact</button>
+  </div>
+</nav>
+
+<!-- ================================================
+     MAIN PAGE WRAPPER
+     ================================================ -->
+<div class="page-wrap">
+
+  <!-- 1. HERO / LANDING -->
+  <section id="welcome">
+    <div class="hero-house-wrap">
+      <div class="hero-house-float">
+        <img src="https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776934163/Gemini_Generated_Image_uzzmdxuzzmdxuzzm-removebg-preview_1776838049304_y8ypn3.png" alt="Floating Pink House" class="hero-house-img" loading="lazy" />
+      </div>
+    </div>
+
+    <div style="z-index:10; display:flex; flex-direction:column; align-items:center; text-align:center;">
+      <div class="hero-card sticker-border">
+        <!-- Spinning sparkle in corner -->
+        <span class="hero-sparkle-spin" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+          </svg>
+        </span>
+
+        <h1 class="hero-title">
+          hi, welcome to niah's house
+          <span style="color:var(--primary); font-size:1.1rem;">✿</span>
+        </h1>
+        <p class="hero-subtitle">come in...</p>
+
+        <button class="btn-enter" onclick="smoothScrollTo('about')">
+          <span style="position:relative;z-index:10;display:flex;align-items:center;gap:0.5rem;">
+            Enter
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 11.5C10.5 11.5 8 13 8 15C8 17 10.5 18.5 12 18.5C13.5 18.5 16 17 16 15C16 13 13.5 11.5 12 11.5ZM4.5 6C3 6 2 7 2 8.5C2 10.5 5 12 6.5 12C8 12 10 10.5 10 8.5C10 7 9 6 7.5 6C6.5 6 5.5 6 4.5 6ZM19.5 6C18.5 6 17.5 6 16.5 6C15 6 14 7 14 8.5C14 10.5 16 12 17.5 12C19 12 22 10.5 22 8.5C22 7 21 6 19.5 6Z"/>
+            </svg>
+          </span>
+          <div class="shimmer"></div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rooms container -->
+  <div style="position:relative;z-index:10;width:100%;display:flex;flex-direction:column;align-items:center;">
+
+    <!-- 2. ABOUT -->
+    <section id="about" class="wallpaper-bg" style="width:100%;padding:8rem 0;scroll-margin-top:2.5rem;">
+      <div class="section-inner">
+        <h2 class="section-title reveal">about me ✿</h2>
+
+        <div class="about-grid" style="margin-top:3rem;">
+          <!-- Photo stamp -->
+          <div style="display:flex;justify-content:center;" class="reveal">
+            <div class="photo-stamp-wrap" style="position:relative;">
+              <div class="photo-rotate" style="position:relative;">
+                <!-- Washi tape -->
+                <div class="washi-tape"></div>
+
+                <div class="stamp-body">
+                  <div class="stamp-perforation"></div>
+                  <div class="stamp-inner">
+                    <div class="stamp-photo-border">
+                      <div class="stamp-photo">
+                        <img src="https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776886397/Ananiah_pic_1776793369235_x1h7j3.jpg" alt="Ananaiah" loading="lazy" />
+                        <div class="stamp-tint"></div>
+                      </div>
+                      <div class="stamp-caption">
+                        <span class="label">Niah's House</span>
+                        <span class="year">est. 2026</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Postmark -->
+                <div class="postmark">
+                  <div class="postmark-inner">
+                    <div class="postmark-sincerely">Sincerely</div>
+                    <div class="postmark-name">Niah</div>
+                    <div class="postmark-flowers">✿ ✿ ✿</div>
+                  </div>
+                </div>
+
+                <!-- Sparkle -->
+                <div class="sparkle-float" aria-hidden="true">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Letter card -->
+          <div class="reveal reveal-delay-1">
+            <div class="letter-card">
+              <div class="letter-tape"></div>
+              <div class="letter-bow" aria-hidden="true">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 9.5C10 7 6 5 3 6C1 6.5 2 11 5 13C7.5 14.5 10.5 13.5 12 12C13.5 13.5 16.5 14.5 19 13C22 11 23 6.5 21 6C18 5 14 7 12 9.5Z"/>
+                  <path d="M12 12C10 16 7 20 5 21C6.5 22 9 19 12 15C15 19 17.5 22 19 21C17 20 14 16 12 12Z"/>
+                </svg>
+              </div>
+              <p class="letter-text">
+                I'm a 4th-year B.Tech (AI &amp; ML) student exploring the intersection of content, creativity, and tech. I create reels, design visual content, and build interactive projects to understand what captures attention and drives engagement.
+              </p>
+              <div class="letter-quote-box">
+                <div class="letter-quote-pill">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z"/></svg>
+                  Experimentation
+                </div>
+                <p class="letter-quote-text">
+                  "Built a personal Instagram page centered around art, poetry, and reading, using it to experiment with reels and audience engagement."
+                </p>
+              </div>
+              <div class="lace-edge" style="position:absolute;bottom:-10px;left:0;width:100%;opacity:0.5;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="section-divider" style="z-index:10;">
+      <div class="line"></div>
+    </div>
+
+    <!-- 3. WORK / THINGS I'VE MADE -->
+    <section id="work" style="width:100%;padding:8rem 0;scroll-margin-top:2.5rem;">
+      <div class="section-inner">
+        <h2 class="section-title reveal">things i've made</h2>
+
+        <div class="reels-grid">
+          <!-- Reel 1 — Highlight -->
+          <div class="reel-window reveal">
+            <div class="reel-bow" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 9.5C10 7 6 5 3 6C1 6.5 2 11 5 13C7.5 14.5 10.5 13.5 12 12C13.5 13.5 16.5 14.5 19 13C22 11 23 6.5 21 6C18 5 14 7 12 9.5Z"/>
+                <path d="M12 12C10 16 7 20 5 21C6.5 22 9 19 12 15C15 19 17.5 22 19 21C17 20 14 16 12 12Z"/>
+              </svg>
+            </div>
+            <div class="reel-frame">
+              <div class="reel-video-wrap highlight">
+                <div class="reel-video-inner">
+                  <video autoplay loop muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;">
+                    <source src="https://res.cloudinary.com/dg1zcff2r/video/upload/q_auto/f_auto/v1776881506/WhatsApp_Video_2026-04-17_at_20.58.02_1776792346510_bowv03.mp4" type="video/mp4" />
+                  </video>
+                </div>
+                <div class="reel-badge">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>
+                  5.8K+ views
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reel 2 -->
+          <div class="reel-window reveal reveal-delay-1">
+            <div class="reel-bow" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 9.5C10 7 6 5 3 6C1 6.5 2 11 5 13C7.5 14.5 10.5 13.5 12 12C13.5 13.5 16.5 14.5 19 13C22 11 23 6.5 21 6C18 5 14 7 12 9.5Z"/>
+                <path d="M12 12C10 16 7 20 5 21C6.5 22 9 19 12 15C15 19 17.5 22 19 21C17 20 14 16 12 12Z"/>
+              </svg>
+            </div>
+            <div class="reel-frame">
+              <div class="reel-video-wrap">
+                <div class="reel-video-inner">
+                  <video autoplay loop muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;">
+                    <source src="https://res.cloudinary.com/dg1zcff2r/video/upload/q_auto/f_auto/v1776881507/WhatsApp_Video_2026-04-17_at_20.58.06_1776792346510_w3ees8.mp4" type="video/mp4" />
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reel 3 -->
+          <div class="reel-window reveal reveal-delay-2">
+            <div class="reel-bow" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 9.5C10 7 6 5 3 6C1 6.5 2 11 5 13C7.5 14.5 10.5 13.5 12 12C13.5 13.5 16.5 14.5 19 13C22 11 23 6.5 21 6C18 5 14 7 12 9.5Z"/>
+                <path d="M12 12C10 16 7 20 5 21C6.5 22 9 19 12 15C15 19 17.5 22 19 21C17 20 14 16 12 12Z"/>
+              </svg>
+            </div>
+            <div class="reel-frame">
+              <div class="reel-video-wrap">
+                <div class="reel-video-inner">
+                  <video autoplay loop muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;">
+                    <source src="https://res.cloudinary.com/dg1zcff2r/video/upload/q_auto/f_auto/WhatsApp_Video_2026-04-17_at_20.58.10_1776792346510_lh4hse.mp4" type="video/mp4" />
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Meocha / Strategy -->
+        <div class="strategy-section">
+          <span class="strategy-label">"content strategy"</span>
+
+          <div class="strategy-intro">
+            <h3><em>Meocha</em>, a cat café × matcha brand concept.</h3>
+            <p>Built for Gen-Z and millennial city-dwellers who love slow mornings, soft aesthetics, and cat company. The visual identity and content calendar were designed to feel cozy, playful, and quietly indulgent. The kind of place you'd take yourself on a Sunday.</p>
+          </div>
+
+          <div class="meocha-grid">
+            <div class="reveal">
+              <div class="wood-frame meocha-brand-frame" style="position:relative;">
+                <div class="frame-nail"></div>
+                <div class="frame-nail-line"></div>
+                <img src="https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776886400/Gray_Green_Modern_Beauty_Studio_Skin_Care_Professional_Busines_1776792980213_ijnhex.png" alt="Meocha — cat × matcha cafe brand layout" loading="lazy" />
+              </div>
+              <p class="meocha-caption">Brand layout for Meocha (cat × matcha cafe)</p>
+            </div>
+            <div class="reveal reveal-delay-1">
+              <div class="calendar-frame">
+                <div class="calendar-topbar">
+                  <span class="dot-red"></span>
+                  <span class="dot-yellow"></span>
+                  <span class="dot-green"></span>
+                  <span class="calendar-filename">meocha_content_calendar.xlsx</span>
+                </div>
+                <img src="https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776933655/image_1776793036583_nvqw7y.png" alt="Two-week content calendar for Meocha" loading="lazy" />
+              </div>
+              <p class="meocha-caption">Two-week content calendar mapped to the brand's tone &amp; visuals</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="section-divider" style="z-index:10;">
+      <svg class="heart-divider" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z"/>
+      </svg>
+    </div>
+
+    <!-- 4. BRAND WORK -->
+    <section id="brand-work" class="wallpaper-bg" style="width:100%;padding:8rem 0;">
+      <div class="section-inner">
+        <h2 class="section-title reveal">brand work</h2>
+
+        <div class="brand-cards">
+          <!-- Pet Grooming -->
+          <button class="brand-card-btn reveal" onclick="openReelsModal('Pet Grooming', 'petgrooming')">
+            <div class="wood-frame brand-card-inner" style="position:relative;">
+              <div class="frame-nail"></div>
+              <div class="frame-nail-line"></div>
+              <div class="brand-pattern">
+                <!-- Paw pattern SVG -->
+                <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;">
+                  <defs>
+                    <pattern id="paws" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                      <g fill="#f7b8c9" opacity="0.28">
+                        <circle cx="20" cy="23" r="4"/>
+                        <circle cx="14" cy="15" r="2"/>
+                        <circle cx="26" cy="15" r="2"/>
+                        <circle cx="9" cy="20" r="1.6"/>
+                        <circle cx="31" cy="20" r="1.6"/>
+                      </g>
+                    </pattern>
+                  </defs>
+                  <rect width="100%" height="100%" fill="url(#paws)"/>
+                  <g transform="translate(100 78)" fill="#e08aa1" opacity="0.78">
+                    <ellipse cx="0" cy="6" rx="16" ry="13"/>
+                    <ellipse cx="-15" cy="-12" rx="6" ry="8"/>
+                    <ellipse cx="15" cy="-12" rx="6" ry="8"/>
+                    <ellipse cx="-25" cy="2" rx="5" ry="6.5"/>
+                    <ellipse cx="25" cy="2" rx="5" ry="6.5"/>
+                  </g>
+                </svg>
+              </div>
+              <div style="text-align:center;padding:0 0.5rem 0.5rem;">
+                <h3 class="brand-card-title">Pet Grooming</h3>
+                <p class="brand-card-desc">Content focusing on trust, care, and clean visuals.</p>
+                <p class="brand-card-cta">click to watch the reels →</p>
+              </div>
+            </div>
+          </button>
+
+          <!-- Handicrafts -->
+          <button class="brand-card-btn reveal reveal-delay-1" onclick="openReelsModal('Handicrafts', 'handicrafts')">
+            <div class="wood-frame brand-card-inner" style="position:relative;background:#fff5f8;">
+              <div class="frame-nail"></div>
+              <div class="frame-nail-line"></div>
+              <div class="brand-pattern" style="background:#fff5f8;">
+                <!-- Block print pattern SVG -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;">
+                  <defs>
+                    <pattern id="blockprint" x="0" y="0" width="44" height="44" patternUnits="userSpaceOnUse">
+                      <g fill="none" stroke="#e89cb0" stroke-width="0.9" opacity="0.3">
+                        <circle cx="22" cy="22" r="6"/>
+                        <circle cx="22" cy="22" r="2" fill="#e89cb0" stroke="none"/>
+                        <path d="M22 10 Q25 16 22 22 Q19 16 22 10 Z" fill="#f3c2d0" stroke="none"/>
+                        <path d="M22 34 Q25 28 22 22 Q19 28 22 34 Z" fill="#f3c2d0" stroke="none"/>
+                        <path d="M10 22 Q16 19 22 22 Q16 25 10 22 Z" fill="#f3c2d0" stroke="none"/>
+                        <path d="M34 22 Q28 19 22 22 Q28 25 34 22 Z" fill="#f3c2d0" stroke="none"/>
+                      </g>
+                    </pattern>
+                  </defs>
+                  <rect width="100%" height="100%" fill="url(#blockprint)"/>
+                  <g transform="translate(100 75)" opacity="0.85">
+                    <g fill="#f0a8bd">
+                      <ellipse cx="0" cy="-22" rx="9" ry="16"/>
+                      <ellipse cx="0" cy="22" rx="9" ry="16"/>
+                      <ellipse cx="-22" cy="0" rx="16" ry="9"/>
+                      <ellipse cx="22" cy="0" rx="16" ry="9"/>
+                      <ellipse cx="-15.5" cy="-15.5" rx="9" ry="14" transform="rotate(-45 -15.5 -15.5)"/>
+                      <ellipse cx="15.5" cy="-15.5" rx="9" ry="14" transform="rotate(45 15.5 -15.5)"/>
+                      <ellipse cx="-15.5" cy="15.5" rx="9" ry="14" transform="rotate(45 -15.5 15.5)"/>
+                      <ellipse cx="15.5" cy="15.5" rx="9" ry="14" transform="rotate(-45 15.5 15.5)"/>
+                    </g>
+                    <circle cx="0" cy="0" r="9" fill="#e08aa1"/>
+                    <circle cx="0" cy="0" r="4" fill="#fff5f8"/>
+                  </g>
+                </svg>
+              </div>
+              <div style="text-align:center;padding:0 0.5rem 0.5rem;">
+                <h3 class="brand-card-title">Handicrafts</h3>
+                <p class="brand-card-desc">Aesthetic storytelling and product-focused visuals.</p>
+                <p class="brand-card-cta">click to watch the reels →</p>
+              </div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. CREATIVE WORK -->
+    <section id="creative-work" style="width:100%;padding:8rem 0;">
+      <div class="section-inner">
+        <h2 class="section-title reveal">creative work</h2>
+        <p class="creative-intro reveal">
+          A collection of visual work exploring layout, typography, and aesthetic storytelling.
+        </p>
+
+        <div class="posters-grid">
+          <div class="poster-item rot-neg-2 reveal">
+            <button class="poster-btn" onclick="openPosterModal('https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776886401/CRUMBS_1__1776793866228_zldkt7.png', 'CRUMBS')" aria-label="View larger image of CRUMBS">
+              <img src="https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776886401/CRUMBS_1__1776793866228_zldkt7.png" alt="CRUMBS short film poster" loading="lazy" />
+            </button>
+            <div class="poster-label">
+              <h3 class="poster-title">CRUMBS <span class="poster-sub">(short film)</span></h3>
+              <p class="poster-desc">A narrative poster focusing on quiet storytelling and everyday emotional detail.</p>
+            </div>
+          </div>
+
+          <div class="poster-item rot-pos-1 reveal reveal-delay-1">
+            <button class="poster-btn" onclick="openPosterModal('https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776886398/I_WILL_DREAM_2__1776795101330_cwfts6.png', 'I WILL DREAM')" aria-label="View larger image of I WILL DREAM">
+              <img src="https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776886398/I_WILL_DREAM_2__1776795101330_cwfts6.png" alt="I WILL DREAM poster" loading="lazy" />
+            </button>
+            <div class="poster-label">
+              <h3 class="poster-title">I WILL DREAM <span class="poster-sub">(poster)</span></h3>
+              <p class="poster-desc">Exploring distortion and nostalgia through low-resolution, fragmented imagery.</p>
+            </div>
+          </div>
+
+          <div class="poster-item rot-neg-1 reveal reveal-delay-2">
+            <button class="poster-btn" onclick="openPosterModal('https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776886401/under_observation_1__1776793866228_jiyju9.png', 'UNDER OBSERVATION')" aria-label="View larger image of UNDER OBSERVATION">
+              <img src="https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776886401/under_observation_1__1776793866228_jiyju9.png" alt="UNDER OBSERVATION poster" loading="lazy" />
+            </button>
+            <div class="poster-label">
+              <h3 class="poster-title">UNDER OBSERVATION <span class="poster-sub">(poster)</span></h3>
+              <p class="poster-desc">A study of repetition, surveillance, and visual layering in constrained compositions.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="shelf-line" style="width:100%;margin-top:2rem;"></div>
+      </div>
+    </section>
+
+    <!-- 6. PROJECTS -->
+    <section id="projects" class="wallpaper-bg" style="width:100%;padding:8rem 0;scroll-margin-top:2.5rem;">
+      <div class="section-inner">
+        <h2 class="section-title reveal">projects</h2>
+
+        <div style="margin-top:4rem;">
+          <!-- Gumball Machine -->
+          <div class="project-card reveal">
+            <div class="project-img-wrap">
+              <img src="https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776934248/gumball_jywn8r.png" alt="Gumball Machine" loading="lazy" />
+            </div>
+            <div class="project-content">
+              <div class="project-badge">Live Project</div>
+              <h3 class="project-title">Gumball Affirmation Machine</h3>
+              <p class="project-desc">An interactive web-based project where users receive random affirmations through a playful gumball machine experience.</p>
+              <a href="https://nianiaxj.github.io/Gumball-Affirmations/" target="_blank" rel="noopener noreferrer" class="project-link">
+                Try it out
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                  <polyline points="15,3 21,3 21,9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Future concept -->
+          <div class="project-future reveal reveal-delay-1" style="margin-top:2rem;">
+            <div class="future-label">Future Lab</div>
+            <h4>Gamified Claw Machine</h4>
+            <p>A conceptual interactive experience for rewards and discounts.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. SKILLS & TOOLS -->
+    <section id="skills" style="width:100%;padding:5rem 0;">
+      <div class="skills-wrap">
+        <h3 class="skills-heading">skills &amp; tools</h3>
+
+        <p class="skills-category-label">skills</p>
+        <div class="pills-row">
+          <div class="skill-pill">Content ideation</div>
+          <div class="skill-pill">Hook writing</div>
+          <div class="skill-pill">Short-form storytelling</div>
+          <div class="skill-pill">Visual storytelling</div>
+          <div class="skill-pill">Content planning</div>
+          <div class="skill-pill">Audience-focused content</div>
+          <div class="skill-pill">Creative experimentation</div>
+        </div>
+        <div class="shelf-line" style="max-width:32rem;margin:0 auto 3rem;"></div>
+
+        <p class="skills-category-label">tools</p>
+        <div class="pills-row">
+          <div class="skill-pill">
+            <span class="pill-icon">
+              <!-- Canva icon -->
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.5 13.5c-.28.28-.72.28-1 0L12 12l-3.5 3.5c-.28.28-.72.28-1 0s-.28-.72 0-1L11 11 7.5 7.5c-.28-.28-.28-.72 0-1s.72-.28 1 0L12 10l3.5-3.5c.28-.28.72-.28 1 0s.28.72 0 1L13 11l3.5 3.5c.28.28.28.72 0 1z"/></svg>
+            </span>
+            Canva
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon">
+              <!-- Instagram icon -->
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </span>
+            Instagram
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon">
+              <!-- Excel icon -->
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21.17 3.25Q21.5 3.25 21.76 3.5 22 3.74 22 4.08V19.92Q22 20.26 21.76 20.5 21.5 20.75 21.17 20.75H7.83Q7.5 20.75 7.24 20.5 7 20.26 7 19.92V17H2.83Q2.5 17 2.24 16.76 2 16.5 2 16.17V7.83Q2 7.5 2.24 7.24 2.5 7 2.83 7H7V4.08Q7 3.74 7.24 3.5 7.5 3.25 7.83 3.25M7 13.06L8.18 15.28H9.97L8.07 12.06L9.93 8.89H8.22L7.13 10.9 7.09 10.96 7.06 11.03Q6.8 10.5 6.5 9.96 6.25 9.43 5.97 8.89H4.16L6.05 12.08 4 15.28H5.78M13.88 19.5V17H8.25V19.5M13.88 15.75V12.63H11V15.75M13.88 11.38V8.5H11V11.38M13.88 7.25V4.5H8.25V7.25M20.75 19.5V17H15.13V19.5M20.75 15.75V12.63H15.13V15.75M20.75 11.38V8.5H15.13V11.38M20.75 7.25V4.5H15.13V7.25Z"/></svg>
+            </span>
+            Excel
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon">
+              <!-- Claude / Anthropic icon simplified -->
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 19h20L12 2zm0 3l7.5 13h-15L12 5z"/></svg>
+            </span>
+            Claude
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon">
+              <!-- HTML5 icon -->
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414v-.001z"/></svg>
+            </span>
+            HTML/CSS
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon">
+              <!-- Python icon -->
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05L0 11.97l.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/></svg>
+            </span>
+            Python
+          </div>
+        </div>
+        <div class="shelf-line" style="max-width:32rem;margin:0 auto;"></div>
+      </div>
+    </section>
+
+    <!-- 8. ART & WRITING -->
+    <section id="art-writing" class="wallpaper-bg" style="width:100%;padding:6rem 0;scroll-margin-top:2.5rem;">
+      <div class="section-inner" style="text-align:center;">
+        <h2 class="section-title reveal">art &amp; writing ✿</h2>
+        <p class="art-intro">
+          i'm a poet and artist, exploring the emotional realities of young womanhood and using art to make sense of it
+        </p>
+
+        <div class="art-doors">
+          <!-- Art card -->
+          <button class="art-door-btn reveal" onclick="openRoomModal('art')">
+            <div class="door-top-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 9.5C10 7 6 5 3 6C1 6.5 2 11 5 13C7.5 14.5 10.5 13.5 12 12C13.5 13.5 16.5 14.5 19 13C22 11 23 6.5 21 6C18 5 14 7 12 9.5Z"/>
+                <path d="M12 12C10 16 7 20 5 21C6.5 22 9 19 12 15C15 19 17.5 22 19 21C17 20 14 16 12 12Z"/>
+              </svg>
+            </div>
+            <div class="door-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.04 2 11.5c0 4.41 3.55 7.5 7.5 7.5.62 0 1.12-.5 1.12-1.12 0-.29-.11-.55-.29-.74-.18-.2-.29-.46-.29-.75 0-.62.5-1.12 1.12-1.12H12c4.41 0 8-3.59 8-8 0-3.04-3.59-6.5-8-6.5zm-5.5 9.5c-.83 0-1.5-.67-1.5-1.5S5.67 8.5 6.5 8.5 8 9.17 8 10s-.67 1.5-1.5 1.5zm3-4C8.67 7.5 8 6.83 8 6s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm5 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3 4c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+              </svg>
+            </div>
+            <h3 class="door-title">Art</h3>
+            <p class="door-subtitle">paintings, sketches, soft little things</p>
+            <p class="door-cta">peek inside →</p>
+          </button>
+
+          <!-- Poetry card -->
+          <button class="art-door-btn reveal reveal-delay-1" onclick="openRoomModal('poetry')">
+            <div class="door-top-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z"/>
+              </svg>
+            </div>
+            <div class="door-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3 21c3-1 6-3 9-7 2.5-3.4 4-6 5.5-9 .8 2 1.5 4.5 1 7-.5 2.5-2 5-4 7-2 2-5 3-7 3-1.5 0-3 0-4.5-.5-.5-.2-.5-.5 0-.5z"/>
+              </svg>
+            </div>
+            <h3 class="door-title">Poetry</h3>
+            <p class="door-subtitle">words for the in-between feelings</p>
+            <p class="door-cta">peek inside →</p>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. CONTACT -->
+    <section id="contact" style="width:100%;padding:5rem 0 8rem;scroll-margin-top:2.5rem;">
+      <div class="section-inner">
+        <h2 class="section-title reveal">contact</h2>
+
+        <div class="contact-inner" style="margin-top:4rem;">
+          <div class="door-illustration">
+            <div class="door-ring">
+              <div class="door-knob"></div>
+              <img src="https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776934249/tiny-door_qtereg.png" alt="" class="door-img" loading="lazy" onerror="this.style.display='none'" />
+            </div>
+          </div>
+
+          <div class="contact-card reveal">
+            <div class="contact-bow" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 9.5C10 7 6 5 3 6C1 6.5 2 11 5 13C7.5 14.5 10.5 13.5 12 12C13.5 13.5 16.5 14.5 19 13C22 11 23 6.5 21 6C18 5 14 7 12 9.5Z"/>
+                <path d="M12 12C10 16 7 20 5 21C6.5 22 9 19 12 15C15 19 17.5 22 19 21C17 20 14 16 12 12Z"/>
+              </svg>
+            </div>
+            <p class="contact-quote">"Open to internships and freelance opportunities."</p>
+            <div class="contact-links">
+              <a href="mailto:ananiah.biju@gmail.com" class="contact-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+                ananiah.biju@gmail.com
+              </a>
+              <a href="https://instagram.com/niaxbones" target="_blank" rel="noopener noreferrer" class="contact-link">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+                @niaxbones
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. CLOSING BEACH SCENE -->
+    <section id="closing" style="z-index:10;">
+      <div class="closing-img-wrap reveal">
+        <img src="https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776886398/WhatsApp_Image_2026-04-22_at_11.10.04_1776836992036_a0pfkd.jpg" alt="silhouette by the sea at sunset" class="closing-img" loading="lazy" />
+        <div class="closing-tint-1"></div>
+        <div class="closing-tint-2"></div>
+        <div class="closing-text">
+          <p>thanks for visiting ✿</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. FOOTER -->
+    <footer>
+      <div class="footer-line"></div>
+      <p class="footer-main">made with love in niah's house ✿</p>
+      <p class="footer-copy">© 2026 Ananiah. All rights reserved.</p>
+    </footer>
+
+  </div><!-- /page-wrap rooms container -->
+</div><!-- /page-wrap -->
+
+
+<!-- ================================================
+     MODALS
+     ================================================ -->
+
+<!-- Reels Modal -->
+<div id="modal-reels" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-reels-title" onclick="closeModal('modal-reels')">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal('modal-reels')" aria-label="Close">×</button>
+    <h3 class="modal-title" id="modal-reels-title">Reels</h3>
+    <p class="modal-subtitle">a peek inside the reels</p>
+    <div class="reels-videos" id="reels-videos-container"></div>
+  </div>
+</div>
+
+<!-- Poster Lightbox -->
+<div id="modal-poster" class="modal-overlay" role="dialog" aria-modal="true" onclick="closeModal('modal-poster')">
+  <div class="modal-box poster-modal-box" onclick="event.stopPropagation()" style="position:relative;">
+    <button class="modal-close" onclick="closeModal('modal-poster')" aria-label="Close" style="background:white;position:absolute;top:-0.75rem;right:-0.75rem;">×</button>
+    <img id="poster-lightbox-img" src="" alt="" />
+  </div>
+</div>
+
+<!-- Art / Poetry Room Modal -->
+<div id="modal-room" class="modal-overlay" role="dialog" aria-modal="true" onclick="closeModal('modal-room')">
+  <div class="modal-box" onclick="event.stopPropagation()" style="max-width:48rem;padding:2rem 2.5rem;my:2rem;">
+    <button class="modal-close" onclick="closeModal('modal-room')" aria-label="Close">×</button>
+    <h3 class="modal-title" id="modal-room-title">Art Room</h3>
+    <p class="modal-subtitle" id="modal-room-subtitle">a small gallery, soft and slow</p>
+    <div id="modal-room-content"></div>
+  </div>
+</div>
+
+
+<!-- ================================================
+     SCRIPTS
+     ================================================ -->
+<script src="script.js"></script>
+</body>
+</html>
