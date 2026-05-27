@@ -1,5 +1,5 @@
 /* ============================================
-   NIAH'S HOUSE — Portfolio JS
+   NIAH'S HOUSE — Static Portfolio JS
    ============================================ */
 
 // ============================================
@@ -38,69 +38,79 @@ function playSparkle() {
 }
 
 // ============================================
-// Custom Cursor — fixed, reliable on all DPIs
+// Custom Cursor
 // ============================================
 (function initCursor() {
+  // Don't run on touch devices
   if (window.matchMedia('(pointer: coarse)').matches) return;
 
   const cursor = document.getElementById('custom-cursor');
   if (!cursor) return;
 
-  // Position cursor image so its wand tip tracks the mouse.
-  // The wand tip in the image is roughly at (20px from left, 8px from top).
-  const TIP_X = 20;
-  const TIP_Y = 8;
-
-  const sparkleColors = ['#fff3a8', '#fde68a', '#ffd6e8', '#f0c8f8', '#e8d0f8'];
+  const sparkleColors = ['#fff3a8', '#ffe27a', '#fde68a', '#fff8c2'];
   let lastSpawn = 0;
-  let mouseX = -300, mouseY = -300;
+  let particleId = 0;
 
-  // Direct tracking — no spring lag that breaks on Windows DPI scaling
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    cursor.style.transform = `translate(${mouseX - TIP_X}px, ${mouseY - TIP_Y}px)`;
+  // Spring simulation state
+  let curX = -200, curY = -200;
+  let velX = 0, velY = 0;
+  let targetX = -200, targetY = -200;
 
-    // Sparkle trail
+  function animate() {
+    const stiffness = 0.18, damping = 0.82;
+    velX = (velX + (targetX - curX) * stiffness) * damping;
+    velY = (velY + (targetY - curY) * stiffness) * damping;
+    curX += velX;
+    curY += velY;
+    cursor.style.transform = `translate(${curX - 62}px, ${curY - 10}px)`;
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  window.addEventListener('mousemove', (e) => {
+    targetX = e.clientX;
+    targetY = e.clientY;
+
+    // Spawn particles
     const now = performance.now();
-    if (now - lastSpawn < 60) return;
+    if (now - lastSpawn < 55) return;
     lastSpawn = now;
 
+    const tipX = e.clientX + 22;
+    const tipY = e.clientY - 22;
+
     const p = document.createElement('div');
-    const size = 3 + Math.floor(Math.random() * 3);
+    const size = [3, 4, 5][Math.floor(Math.random() * 3)];
     const color = sparkleColors[Math.floor(Math.random() * sparkleColors.length)];
-    const drift = (Math.random() - 0.5) * 16;
+    const drift = (Math.random() - 0.5) * 18;
+    const x = tipX + (Math.random() - 0.5) * 14;
+    const y = tipY + (Math.random() - 0.5) * 14;
+
     p.className = 'cursor-particle';
     p.style.cssText = `
       width:${size}px; height:${size}px;
       background:${color};
-      left:${mouseX + (Math.random() - 0.5) * 10}px;
-      top:${mouseY + (Math.random() - 0.5) * 10}px;
+      left:${x}px; top:${y}px;
+      box-shadow:1px 0 0 ${color}, 0 1px 0 ${color};
+      --drift:${drift}px;
     `;
+    p.style.setProperty('--drift', `${drift}px`);
+
+    // Override animation to use dynamic drift
+    p.style.animation = 'none';
     document.body.appendChild(p);
+
+    // Manual animation using WAAPI
     p.animate(
       [
-        { opacity: 0.9, transform: 'translateY(0) scale(1)' },
-        { opacity: 0,   transform: `translateY(20px) translateX(${drift}px) scale(0.5)` }
+        { opacity: 1, transform: 'translateY(0px) translateX(0px) scale(1)' },
+        { opacity: 0, transform: `translateY(22px) translateX(${drift}px) scale(0.6)` }
       ],
-      { duration: 650, easing: 'ease-out', fill: 'forwards' }
+      { duration: 700, easing: 'ease-out', fill: 'forwards' }
     ).finished.then(() => p.remove());
   });
 
-  // Scale cursor slightly on interactive hover
-  const interactives = 'button, a, .brand-card-btn, .poster-btn, .art-door-btn, .skill-pill, .project-link';
-  document.querySelectorAll(interactives).forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursor.style.transition = 'transform 0.15s ease, width 0.15s ease, height 0.15s ease';
-      cursor.style.width  = '96px';
-      cursor.style.height = '96px';
-    });
-    el.addEventListener('mouseleave', () => {
-      cursor.style.width  = '84px';
-      cursor.style.height = '84px';
-    });
-  });
-
+  // Hide default cursor styling for custom cursor img
   cursor.style.display = 'block';
 })();
 
@@ -112,26 +122,41 @@ function playSparkle() {
   const navBtns = document.querySelectorAll('.nav-btn');
   const sections = ['welcome', 'about', 'work', 'projects', 'contact'];
 
+  // Show/hide nav on scroll
   window.addEventListener('scroll', () => {
-    nav.classList.toggle('visible', window.scrollY > 200);
+    if (window.scrollY > 200) {
+      nav.classList.add('visible');
+    } else {
+      nav.classList.remove('visible');
+    }
+
+    // Active section tracking
     let current = sections[0];
     sections.forEach(id => {
       const el = document.getElementById(id);
-      if (el && el.getBoundingClientRect().top <= 150) current = id;
+      if (el) {
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= 150) current = id;
+      }
     });
-    navBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.target === current));
+
+    navBtns.forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.target === current);
+    });
   }, { passive: true });
 
+  // Click to scroll
   navBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      const el = document.getElementById(btn.dataset.target);
+      const target = btn.dataset.target;
+      const el = document.getElementById(target);
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     });
   });
 })();
 
 // ============================================
-// Scroll Reveal
+// Scroll Reveal (Intersection Observer)
 // ============================================
 (function initReveal() {
   const observer = new IntersectionObserver((entries) => {
@@ -141,7 +166,8 @@ function playSparkle() {
         observer.unobserve(entry.target);
       }
     });
-  }, { rootMargin: '-40px 0px', threshold: 0.06 });
+  }, { rootMargin: '-80px 0px', threshold: 0.1 });
+
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 })();
 
@@ -151,183 +177,11 @@ function playSparkle() {
 (function initParallax() {
   const houseWrap = document.querySelector('.hero-house-wrap');
   if (!houseWrap) return;
+
   window.addEventListener('scroll', () => {
     const progress = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
-    houseWrap.style.transform = `translateY(${progress * 40}%)`;
+    houseWrap.style.transform = `translateY(${progress * 50}%)`;
   }, { passive: true });
-})();
-
-// ============================================
-// Scroll progress bar
-// ============================================
-(function initScrollBar() {
-  const bar = document.createElement('div');
-  bar.id = 'scroll-progress';
-  bar.style.cssText = `position:fixed;top:0;left:0;height:2px;width:0%;
-    background:linear-gradient(90deg,hsl(270,50%,75%),hsl(340,70%,82%),hsl(45,80%,78%));
-    z-index:9999;pointer-events:none;transition:width 0.1s linear;`;
-  document.body.appendChild(bar);
-  window.addEventListener('scroll', () => {
-    const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-    bar.style.width = pct + '%';
-  }, { passive: true });
-})();
-
-// ============================================
-// Section title letter reveal on scroll entry
-// ============================================
-(function initTitleReveal() {
-  const titles = document.querySelectorAll('.section-title');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target;
-      const original = el.textContent;
-      el.innerHTML = '';
-      el.style.cssText += 'opacity:1;transform:none;';
-      [...original].forEach((char, i) => {
-        const span = document.createElement('span');
-        span.textContent = char === ' ' ? '\u00A0' : char;
-        span.style.cssText = `display:inline-block;opacity:0;transform:translateY(18px);
-          transition:opacity 0.3s ease ${i * 25}ms, transform 0.3s ease ${i * 25}ms;`;
-        el.appendChild(span);
-        requestAnimationFrame(() => {
-          span.style.opacity  = '1';
-          span.style.transform = 'translateY(0)';
-        });
-      });
-      observer.unobserve(el);
-    });
-  }, { threshold: 0.5 });
-  titles.forEach(t => observer.observe(t));
-})();
-
-// ============================================
-// Simple hover lifts — cards, posters, reels
-// ============================================
-(function initHovers() {
-  // Poster items
-  document.querySelectorAll('.poster-btn').forEach(btn => {
-    btn.addEventListener('mouseenter', () => {
-      btn.style.transition = 'transform 0.25s ease, box-shadow 0.25s ease';
-      btn.style.transform = 'translateY(-6px)';
-      btn.style.boxShadow = '0 12px 28px rgba(0,0,0,0.1)';
-    });
-    btn.addEventListener('mouseleave', () => {
-      btn.style.transform = '';
-      btn.style.boxShadow = '';
-    });
-  });
-
-  // Reel windows
-  document.querySelectorAll('.reel-window').forEach(reel => {
-    reel.addEventListener('mouseenter', () => {
-      reel.style.transition = 'transform 0.25s ease';
-      reel.style.transform = 'translateY(-6px)';
-    });
-    reel.addEventListener('mouseleave', () => { reel.style.transform = ''; });
-  });
-
-  // Art doors
-  document.querySelectorAll('.art-door-btn').forEach(door => {
-    door.addEventListener('mouseenter', () => {
-      door.style.transition = 'transform 0.25s ease, box-shadow 0.25s ease';
-      door.style.transform = 'translateY(-5px)';
-      door.style.boxShadow = '0 12px 32px rgba(200,140,160,0.15)';
-    });
-    door.addEventListener('mouseleave', () => {
-      door.style.transform = '';
-      door.style.boxShadow = '';
-    });
-  });
-
-  // Contact links
-  document.querySelectorAll('.contact-link').forEach(link => {
-    link.addEventListener('mouseenter', () => {
-      link.style.transition = 'transform 0.2s ease';
-      link.style.transform = 'translateY(-4px)';
-    });
-    link.addEventListener('mouseleave', () => { link.style.transform = ''; });
-  });
-
-  // Skill pills
-  document.querySelectorAll('.skill-pill').forEach(pill => {
-    pill.addEventListener('mouseenter', () => {
-      pill.style.transition = 'transform 0.2s ease, background 0.2s ease';
-      pill.style.transform = 'translateY(-4px)';
-      pill.style.background = 'hsl(340,70%,97%)';
-    });
-    pill.addEventListener('mouseleave', () => {
-      pill.style.transform = '';
-      pill.style.background = '';
-    });
-  });
-
-  // Project cards v2
-  document.querySelectorAll('.project-card-v2').forEach(card => {
-    card.addEventListener('mouseenter', () => {
-      card.style.transition = 'transform 0.25s ease, box-shadow 0.25s ease';
-      card.style.transform = 'translateY(-4px)';
-      card.style.boxShadow = '0 12px 32px rgba(0,0,0,0.1)';
-    });
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
-      card.style.boxShadow = '';
-    });
-  });
-
-  // Brand cards
-  document.querySelectorAll('.brand-card-btn').forEach(btn => {
-    btn.addEventListener('mouseenter', () => {
-      const inner = btn.querySelector('.brand-card-inner');
-      if (inner) {
-        inner.style.transition = 'transform 0.25s ease';
-        inner.style.transform = 'translateY(-5px)';
-      }
-    });
-    btn.addEventListener('mouseleave', () => {
-      const inner = btn.querySelector('.brand-card-inner');
-      if (inner) inner.style.transform = '';
-    });
-  });
-})();
-
-// ============================================
-// Pill row stagger on scroll entry
-// ============================================
-(function initPillStagger() {
-  const rows = document.querySelectorAll('.pills-row');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.querySelectorAll('.skill-pill').forEach((pill, i) => {
-        pill.style.opacity   = '0';
-        pill.style.transform = 'translateY(12px)';
-        setTimeout(() => {
-          pill.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
-          pill.style.opacity    = '1';
-          pill.style.transform  = 'translateY(0)';
-        }, i * 45);
-      });
-      observer.unobserve(entry.target);
-    });
-  }, { threshold: 0.2 });
-  rows.forEach(r => observer.observe(r));
-})();
-
-// ============================================
-// Letter card wiggle on entry
-// ============================================
-(function initLetterWiggle() {
-  const card = document.querySelector('.letter-card');
-  if (!card) return;
-  const observer = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) {
-      card.style.animation = 'letter-wiggle 0.5s ease forwards';
-      observer.unobserve(card);
-    }
-  }, { threshold: 0.4 });
-  observer.observe(card);
 })();
 
 // ============================================
@@ -351,9 +205,9 @@ function openModal(id) {
   if (!overlay) return;
   overlay.classList.add('open');
   document.body.style.overflow = 'hidden';
-  const onKey = (e) => {
-    if (e.key === 'Escape') { closeModal(id); document.removeEventListener('keydown', onKey); }
-  };
+
+  // ESC to close
+  const onKey = (e) => { if (e.key === 'Escape') { closeModal(id); document.removeEventListener('keydown', onKey); } };
   document.addEventListener('keydown', onKey);
 }
 
@@ -362,24 +216,33 @@ function closeModal(id) {
   if (!overlay) return;
   overlay.classList.remove('open');
   document.body.style.overflow = '';
+
+  // Pause any videos inside
   overlay.querySelectorAll('video').forEach(v => v.pause());
 }
 
 function openReelsModal(title, setKey) {
   const container = document.getElementById('reels-videos-container');
   const titleEl   = document.getElementById('modal-reels-title');
-  if (!container) return;
-  if (titleEl) titleEl.textContent = title;
+  if (!container || !titleEl) return;
+
+  titleEl.textContent = title;
   container.innerHTML = '';
-  (reelSets[setKey] || []).forEach(src => {
+
+  const videos = reelSets[setKey] || [];
+  videos.forEach(src => {
     const item = document.createElement('div');
     item.className = 'reel-modal-item wood-frame';
-    item.innerHTML = `<div class="reel-modal-video">
-      <video autoplay loop muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;">
-        <source src="${src}" type="video/mp4" />
-      </video></div>`;
+    item.innerHTML = `
+      <div class="reel-modal-video">
+        <video autoplay loop muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;">
+          <source src="${src}" type="video/mp4" />
+        </video>
+      </div>
+    `;
     container.appendChild(item);
   });
+
   openModal('modal-reels');
 }
 
@@ -395,67 +258,173 @@ function openRoomModal(room) {
   const titleEl    = document.getElementById('modal-room-title');
   const subtitleEl = document.getElementById('modal-room-subtitle');
   const content    = document.getElementById('modal-room-content');
-  if (!content) return;
+  if (!titleEl || !content) return;
 
   if (room === 'art') {
-    if (titleEl)    titleEl.textContent    = 'art room';
-    if (subtitleEl) subtitleEl.textContent = 'a small gallery, soft and slow';
+    titleEl.textContent    = 'art room';
+    subtitleEl.textContent = 'a small gallery, soft and slow';
     const artworks = [
-      { title: 'Vulning Pelican', src: 'https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776887182/WhatsApp_Image_2026-04-22_at_15.59.34_nfjxzo.jpg' },
-      { title: 'Watch Over Me',   src: 'https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776887181/WhatsApp_Image_2026-04-22_at_15.58.14_ikn8pp.jpg' },
-      { title: 'Red Chords',      src: 'https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776887053/WhatsApp_Image_2026-04-09_at_11.58.19_1_kdokil.jpg', noCaption: true, fitFrame: true }
+      {
+        title: 'Vulning Pelican',
+        src: 'https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776887182/WhatsApp_Image_2026-04-22_at_15.59.34_nfjxzo.jpg'
+      },
+      {
+        title: 'Watch Over Me',
+        src: 'https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776887181/WhatsApp_Image_2026-04-22_at_15.58.14_ikn8pp.jpg'
+      },
+      {
+        title: 'Red Chords',
+        src: 'https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776887053/WhatsApp_Image_2026-04-09_at_11.58.19_1_kdokil.jpg',
+        noCaption: true,
+        fitFrame: true
+      }
     ];
-    const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-    content.innerHTML = `<div class="art-grid">
-      ${artworks.map(a => `<figure class="art-frame">
-        <div class="art-frame-inner has-image"${a.fitFrame ? ' style="aspect-ratio:auto;height:auto;"' : ''}>
-          <img src="${esc(a.src)}" alt="${esc(a.title)}" loading="lazy"${a.fitFrame ? ' style="width:100%;height:auto;object-fit:unset;"' : ''} />
-        </div>
-        ${a.noCaption ? '' : `<figcaption class="art-caption">${esc(a.title)}</figcaption>`}
-      </figure>`).join('')}
-      <p class="art-coming-soon">share your artwork to fill these lace frames</p>
-    </div>`;
+    const escapeAttr = (s) => String(s).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    content.innerHTML = `
+      <div class="art-grid">
+        ${artworks.map((a) => a ? `
+          <figure class="art-frame">
+            <div class="art-frame-inner has-image"${a.fitFrame ? ' style="aspect-ratio:auto;height:auto;"' : ''}>
+              <img src="${escapeAttr(a.src)}" alt="${escapeAttr(a.title)}" loading="lazy"${a.fitFrame ? ' style="width:100%;height:auto;object-fit:unset;"' : ''} />
+            </div>
+            ${a.noCaption ? '' : `<figcaption class="art-caption">${escapeAttr(a.title)}</figcaption>`}
+          </figure>
+        ` : `
+          <div class="art-frame">
+            <div class="art-frame-inner">
+              <p>art piece coming soon</p>
+            </div>
+          </div>
+        `).join('')}
+        <p class="art-coming-soon">share your artwork to fill these lace frames</p>
+      </div>
+    `;
   } else {
-    if (titleEl)    titleEl.textContent    = 'poetry corner';
-    if (subtitleEl) subtitleEl.textContent = 'a few words from the in-between';
+    titleEl.textContent    = 'poetry corner';
+    subtitleEl.textContent = 'a few words from the in-between';
     const poems = [
-      { title: 'Pink Plastic Dinos', body: `You brought me pink plastic dinos when I was six,\nI'd hide them between your couch,\nAnd we'd laugh when you found them,\nA decade later,\nI still buy myself pink plastic dinos,\nThat I'll hide when I'm home,\nWaiting for you to find them,\nSo we could laugh again.` },
-      { title: 'Born Entertainer',   body: `Who am I performing for?\nwith a red ball for a nose\nand a cracked smile\nupon my white powdered cheeks\ni know you're watching\nnot her beside you\npearls in her hair\nmoons shining beneath her silk\n\nand when the curtain rips\nI spin on glass shards\nI swirl in blood pools\nthe spotlight illuminates my every limb\nthe audience beg for more,\ntheir applause deafens me,\n\nI know you're watching me,\nwhen you lean in to kiss her\nafter my show` },
-      { title: 'Love Came Home',     body: `Love came home\nto blood-dried marble tiles,\nto white lilies rotting on fungus grounds,\nto graves dug out for one (by one),\nto yellowing teeth and tar-filled lungs,\nto shards of glass pricking the sole,\nto sick, silent nights with a sinner,\nto scarlet slashes and impurity,\nto skin and bones,\nto earth-fed nails and mouthfuls of dirt,\nto remains of alcohol and smoke,\nto whispers and silent prayers,\nto empty altars and scattered rosary beads,\nto metamorphosis and a little rage,\nto warm touches and twisted tongues,\nto tears and a body whole,\nlove came home to me` }
+      {
+        title: 'Pink Plastic Dinos',
+        body: `You brought me pink plastic dinos when I was six,
+I'd hide them between your couch,
+And we'd laugh when you found them,
+A decade later,
+I still buy myself pink plastic dinos,
+That I'll hide when I'm home,
+Waiting for you to find them,
+So we could laugh again.`
+      },
+      {
+        title: 'Born Entertainer',
+        body: `Who am I performing for?
+with a red ball for a nose
+and a cracked smile
+upon my white powdered cheeks
+i know you're watching
+not her beside you
+pearls in her hair
+moons shining beneath her silk
+
+and when the curtain rips
+I spin on glass shards
+I swirl in blood pools
+the spotlight illuminates my every limb
+the audience beg for more,
+their applause deafens me,
+
+I know you're watching me,
+when you lean in to kiss her
+after my show`
+      },
+      {
+        title: 'Love Came Home',
+        body: `Love came home
+to blood-dried marble tiles,
+to white lilies rotting on fungus grounds,
+to graves dug out for one (by one),
+to yellowing teeth and tar-filled lungs,
+to shards of glass pricking the sole,
+to sick, silent nights with a sinner,
+to scarlet slashes and impurity,
+to skin and bones,
+to earth-fed nails and mouthfuls of dirt,
+to remains of alcohol and smoke,
+to whispers and silent prayers,
+to empty altars and scattered rosary beads,
+to metamorphosis and a little rage,
+to warm touches and twisted tongues,
+to tears and a body whole,
+love came home to me`
+      }
     ];
-    const esc = s => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-    content.innerHTML = `<ul class="poem-titles">
-      ${poems.map((p, i) => `<li>
-        <button type="button" class="poem-title-btn" data-index="${i}" aria-expanded="false" aria-controls="poem-panel-${i}">
-          <span class="poem-title-text">${esc(p.title)}</span>
-          <span class="poem-title-glyph" aria-hidden="true">✦</span>
-        </button>
-        <div id="poem-panel-${i}" class="poem-panel" hidden>
-          <div class="poem-scroll"><p class="poetry-text">${esc(p.body)}</p></div>
-        </div>
-      </li>`).join('')}
-    </ul>`;
-    content.querySelectorAll('.poem-title-btn').forEach(btn => {
+    const escapeHtml = (s) => s.replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    content.innerHTML = `
+      <ul class="poem-titles">
+        ${poems.map((p, i) => `
+          <li>
+            <button type="button" class="poem-title-btn" data-index="${i}" aria-expanded="false" aria-controls="poem-panel-${i}">
+              <span class="poem-title-text">${escapeHtml(p.title)}</span>
+              <span class="poem-title-glyph" aria-hidden="true">✦</span>
+            </button>
+            <div id="poem-panel-${i}" class="poem-panel" hidden>
+              <div class="poem-scroll">
+                <p class="poetry-text">${escapeHtml(p.body)}</p>
+              </div>
+            </div>
+          </li>
+        `).join('')}
+      </ul>
+    `;
+    content.querySelectorAll('.poem-title-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
         const isOpen = btn.getAttribute('aria-expanded') === 'true';
-        content.querySelectorAll('.poem-title-btn').forEach(other => {
+        content.querySelectorAll('.poem-title-btn').forEach((other) => {
           other.setAttribute('aria-expanded', 'false');
           const panel = document.getElementById(other.getAttribute('aria-controls'));
-          if (panel) { panel.hidden = true; panel.classList.remove('open'); }
+          if (panel) {
+            panel.hidden = true;
+            panel.classList.remove('open');
+          }
         });
         if (!isOpen) {
           btn.setAttribute('aria-expanded', 'true');
           const panel = document.getElementById(btn.getAttribute('aria-controls'));
-          if (panel) { panel.hidden = false; requestAnimationFrame(() => panel.classList.add('open')); }
+          if (panel) {
+            panel.hidden = false;
+            requestAnimationFrame(() => panel.classList.add('open'));
+          }
         }
       });
     });
   }
+
   openModal('modal-room');
 }
 
 // ============================================
-// Back-to-top on footer click
+// Lazy-load videos (only load when near viewport)
+// ============================================
+(function initLazyVideos() {
+  if (!('IntersectionObserver' in window)) return;
+
+  const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const video = entry.target;
+        video.querySelectorAll('source[data-src]').forEach(source => {
+          source.src = source.dataset.src;
+        });
+        video.load();
+        videoObserver.unobserve(video);
+      }
+    });
+  }, { rootMargin: '200px' });
+
+  document.querySelectorAll('video[data-lazy]').forEach(v => videoObserver.observe(v));
+})();
+
+// ============================================
+// Back-to-top on footer click (bonus touch)
 // ============================================
 document.querySelector('footer')?.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
