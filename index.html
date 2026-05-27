@@ -6,539 +6,40 @@
   <title>Niah's House</title>
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
   <meta property="og:image" content="assets/opengraph.jpg" />
-  <meta name="description" content="Niah's creative portfolio: content, art, and interactive projects." />
+  <meta name="description" content="Niah's creative portfolio — content, art, and interactive projects." />
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
-
-  <style>
-    .project-preview-lavender {
-      width: 100%; height: 180px; background: #1a0d2e;
-      position: relative; overflow: hidden; border-radius: 8px 8px 0 0;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Courier New', monospace;
-    }
-    .project-preview-lavender::before {
-      content: ''; position: absolute; inset: 0;
-      background-image:
-        repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(120,60,180,0.08) 19px, rgba(120,60,180,0.08) 20px),
-        repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(120,60,180,0.08) 19px, rgba(120,60,180,0.08) 20px);
-    }
-    .project-preview-lavender .pixel-title {
-      font-size: 1.1rem; color: #ff3fa4; letter-spacing: 0.12em;
-      text-shadow: 0 0 12px #ff3fa4, 0 0 24px rgba(255,63,164,0.4);
-      position: relative; z-index: 2; text-align: center; line-height: 1.6;
-    }
-    .project-preview-lavender .pixel-sub { font-size: 0.6rem; color: #e8d44d; letter-spacing: 0.08em; }
-    .pixel-blob { position: absolute; width: 44px; height: 44px; top: 18px; right: 28px; z-index: 2; }
-    .pixel-blob-inner {
-      width: 22px; height: 22px; background: #c084f5; border-radius: 50%;
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-      box-shadow: 0 0 0 4px #1a0d2e, 0 0 0 6px #c084f5, 0 0 16px #c084f5;
-    }
-    .project-preview-insght {
-      width: 100%; height: 180px; background: #0d0d0d;
-      position: relative; overflow: hidden; border-radius: 8px 8px 0 0;
-      display: flex; flex-direction: column; align-items: flex-start;
-      justify-content: center; padding: 1rem 1.25rem; gap: 0.5rem;
-    }
-    .project-preview-insght::after {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 80% 30%, rgba(255,20,147,0.12) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .insght-label { font-family: 'Courier New', monospace; font-size: 0.55rem; letter-spacing: 0.18em; color: rgba(255,20,147,0.6); text-transform: uppercase; }
-    .insght-title { font-family: 'Courier New', monospace; font-size: 1.4rem; font-weight: 700; color: #ff3fa4; letter-spacing: 0.22em; text-shadow: 0 0 8px rgba(255,63,164,0.6); line-height: 1; }
-    .insght-row { display: flex; gap: 1rem; margin-top: 0.25rem; }
-    .insght-stat { display: flex; flex-direction: column; gap: 2px; }
-    .insght-stat-label { font-family: 'Courier New', monospace; font-size: 0.45rem; letter-spacing: 0.14em; color: rgba(255,255,255,0.35); text-transform: uppercase; }
-    .insght-stat-val { font-family: 'Courier New', monospace; font-size: 0.85rem; color: #ff3fa4; font-weight: 700; text-shadow: 0 0 6px rgba(255,63,164,0.5); }
-    .insght-line { position: absolute; bottom: 28px; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,63,164,0.15), rgba(255,63,164,0.5), rgba(255,63,164,0.8), rgba(255,63,164,0.5), rgba(255,63,164,0.15), transparent); }
-
-    /* ── Lavender pixel fragments ── */
-    .lav-pixel {
-      position: absolute;
-      image-rendering: pixelated;
-      opacity: 0.7;
-      animation: lav-float 3.5s ease-in-out infinite;
-    }
-    @keyframes lav-float {
-      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
-      50%       { transform: translateY(-10px) rotate(90deg); opacity: 0.4; }
-    }
-
-    /* ── INSGHT sparkle stars ── */
-    .insght-star {
-      position: absolute;
-      opacity: 0.6;
-      animation: insght-pulse 3s ease-in-out infinite;
-      background: radial-gradient(circle, rgba(255,63,164,0.9) 0%, transparent 70%);
-      border-radius: 50%;
-      filter: blur(0.5px);
-    }
-    .insght-star::before, .insght-star::after {
-      content: '';
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(255,63,164,0.6);
-    }
-    .insght-star::before { width: 100%; height: 2px; border-radius: 1px; }
-    .insght-star::after  { width: 2px; height: 100%; border-radius: 1px; }
-    @keyframes insght-pulse {
-      0%, 100% { transform: scale(1) rotate(0deg);   opacity: 0.6; }
-      50%       { transform: scale(1.4) rotate(45deg); opacity: 0.25; }
-    }
-
-    /* ── pixel-blob: add float to existing ── */
-    .pixel-blob-inner {
-      width: 22px; height: 22px; background: #c084f5; border-radius: 50%;
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-      box-shadow: 0 0 0 4px #1a0d2e, 0 0 0 6px #c084f5, 0 0 16px #c084f5;
-      animation: blob-pulse 2.5s ease-in-out infinite;
-    }
-    @keyframes blob-pulse {
-      0%, 100% { box-shadow: 0 0 0 4px #1a0d2e, 0 0 0 6px #c084f5, 0 0 16px #c084f5; }
-      50%       { box-shadow: 0 0 0 4px #1a0d2e, 0 0 0 8px #c084f5, 0 0 28px #c084f5; }
-    }
-
-    /* ── INSGHT stat values: subtle count-up flicker ── */
-    @keyframes stat-flicker {
-      0%, 90%, 100% { opacity: 1; }
-      95%            { opacity: 0.6; }
-    }
-    .insght-stat-val {
-      font-family: 'Courier New', monospace; font-size: 0.85rem; color: #ff3fa4;
-      font-weight: 700; text-shadow: 0 0 6px rgba(255,63,164,0.5);
-      animation: stat-flicker 4s ease-in-out infinite;
-    }
-    .insght-stat:nth-child(2) .insght-stat-val { animation-delay: 1.3s; }
-    .insght-stat:nth-child(3) .insght-stat-val { animation-delay: 2.6s; }
-    .project-card-v2 {
-      background: var(--card-bg, #fff9f5); border-radius: 12px; overflow: hidden;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.08); transition: transform 0.25s ease, box-shadow 0.25s ease; margin-bottom: 2rem;
-    }
-    .project-card-v2:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
-    .project-card-v2 .project-content-v2 { padding: 1.5rem 1.75rem 1.75rem; }
-    .project-tag-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem; flex-wrap: wrap; }
-    .project-tag { font-size: 0.65rem; font-family: 'Outfit', sans-serif; letter-spacing: 0.1em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; font-weight: 600; }
-    .tag-live { background: #d4f0d4; color: #2d7a2d; }
-    .tag-game { background: #e8d6f7; color: #6a22a8; }
-    .tag-data { background: #fce4ec; color: #b71c5a; }
-    .tag-interactive { background: #e3f2fd; color: #1565c0; }
-    .project-rationale {
-      font-size: 0.78rem; font-family: 'Outfit', sans-serif; color: var(--text-muted, #888);
-      font-style: italic; margin-top: 0.5rem; line-height: 1.6;
-      padding-left: 0.75rem; border-left: 2px solid var(--primary, #f0a0b8);
-    }
-    .project-links-row { display: flex; gap: 0.75rem; margin-top: 1rem; flex-wrap: wrap; }
-
-    /* ── MEOCHA BRAND STRATEGY BREAKDOWN ── */
-    .meocha-strategy-breakdown {
-      border-top: 1.5px dashed rgba(224, 138, 161, 0.35);
-      padding-top: 3rem;
-    }
-    .msb-header { margin-bottom: 2rem; }
-    .msb-label {
-      display: inline-block;
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.65rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--primary, #e08aa1);
-      background: rgba(224,138,161,0.1);
-      padding: 3px 12px;
-      border-radius: 999px;
-      margin-bottom: 0.75rem;
-      font-weight: 600;
-    }
-    .msb-title {
-      font-family: 'Fraunces', serif;
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--text, #3a2a2a);
-      margin: 0;
-      font-style: italic;
-    }
-    .msb-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
-    }
-    @media (max-width: 680px) {
-      .msb-grid { grid-template-columns: 1fr; }
-      .msb-card-wide { grid-column: span 1; }
-    }
-    .msb-card-wide { grid-column: span 2; }
-    .msb-card {
-      background: #fff9f5;
-      border: 1px solid rgba(224,138,161,0.18);
-      border-radius: 12px;
-      padding: 1.5rem;
-    }
-    .msb-card-accent {
-      background: rgba(224,138,161,0.06);
-      border-color: rgba(224,138,161,0.3);
-    }
-    .msb-card-icon {
-      width: 34px; height: 34px;
-      background: rgba(224,138,161,0.12);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--primary, #e08aa1);
-      margin-bottom: 0.85rem;
-    }
-    .msb-card-title {
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text, #3a2a2a);
-      margin: 0 0 0.6rem;
-    }
-    .msb-card-body {
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.85rem;
-      line-height: 1.7;
-      color: var(--text-muted, #7a6060);
-      margin: 0;
-    }
-    .msb-palette-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-    @media (max-width: 520px) {
-      .msb-palette-row { grid-template-columns: 1fr; }
-    }
-    .msb-swatch-item { display: flex; align-items: flex-start; gap: 0.75rem; }
-    .msb-swatch {
-      width: 36px; height: 36px;
-      border-radius: 8px;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-    .msb-swatch-text {
-      display: flex; flex-direction: column; gap: 3px;
-    }
-    .msb-swatch-text strong {
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--text, #3a2a2a);
-    }
-    .msb-swatch-text span {
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.75rem;
-      line-height: 1.55;
-      color: var(--text-muted, #7a6060);
-    }
-
-    /* ============================================
-       HOUSE VIBE ADDITIONS
-       ============================================ */
-
-    /* ── String lights across hero ── */
-    .string-lights {
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 60px;
-      pointer-events: none;
-      z-index: 2;
-      overflow: hidden;
-    }
-    .string-lights svg { width: 100%; height: 100%; }
-
-    /* ── Welcome mat ── */
-    .welcome-mat {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 12;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      opacity: 0.7;
-    }
-    .welcome-mat-rug {
-      width: 120px; height: 40px;
-      background: repeating-linear-gradient(
-        90deg,
-        hsl(270,50%,82%) 0px, hsl(270,50%,82%) 8px,
-        hsl(340,70%,88%) 8px, hsl(340,70%,88%) 16px,
-        hsl(45,80%,82%) 16px, hsl(45,80%,82%) 24px,
-        hsl(340,70%,88%) 24px, hsl(340,70%,88%) 32px
-      );
-      border-radius: 4px;
-      border: 2px solid hsl(270,40%,75%);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-    .welcome-mat-fringe {
-      display: flex; gap: 3px;
-    }
-    .welcome-mat-fringe span {
-      width: 3px; height: 10px;
-      background: hsl(270,50%,78%);
-      border-radius: 0 0 2px 2px;
-    }
-
-    /* ── Room plaques ── */
-    .room-plaque {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: 'Fraunces', serif;
-      font-size: 0.65rem;
-      font-style: italic;
-      letter-spacing: 0.12em;
-      color: hsl(20,30%,55%);
-      background: hsl(40,50%,97%);
-      border: 1px solid hsl(340,25%,84%);
-      border-radius: 4px;
-      padding: 3px 10px 3px 8px;
-      margin-bottom: 0.75rem;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.8);
-      position: relative;
-    }
-    .room-plaque::before {
-      content: '';
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: hsl(270,40%,78%);
-      box-shadow: 0 0 0 2px hsl(40,50%,97%), 0 0 0 3px hsl(270,30%,82%);
-      flex-shrink: 0;
-    }
-
-    /* ── Doorway divider (arch) ── */
-    .doorway-divider {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      z-index: 10;
-      padding: 0;
-      margin: 0;
-    }
-    .doorway-arch {
-      width: 120px;
-      height: 48px;
-      position: relative;
-    }
-    .doorway-arch svg {
-      width: 100%; height: 100%;
-    }
-    .doorway-floor {
-      width: 100%;
-      height: 6px;
-      background: repeating-linear-gradient(
-        90deg,
-        hsl(30,40%,88%) 0px, hsl(30,40%,88%) 28px,
-        hsl(30,30%,83%) 28px, hsl(30,30%,83%) 30px
-      );
-      opacity: 0.5;
-    }
-
-    /* ── Floor edge at section bottoms ── */
-    .floor-edge {
-      width: 100%;
-      height: 8px;
-      background: repeating-linear-gradient(
-        90deg,
-        hsl(30,40%,86%) 0px, hsl(30,40%,86%) 40px,
-        hsl(30,35%,81%) 40px, hsl(30,35%,81%) 42px
-      );
-      opacity: 0.4;
-      position: relative;
-      z-index: 10;
-    }
-    .floor-edge::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, hsl(30,40%,78%), transparent);
-      opacity: 0.6;
-    }
-
-    /* ── Window frame decoration (about section) ── */
-    .window-frame {
-      position: absolute;
-      right: 2rem; top: 3rem;
-      width: 80px;
-      opacity: 0.15;
-      pointer-events: none;
-    }
-    @media (max-width: 900px) { .window-frame { display: none; } }
-
-    /* ── Hanging artwork wire ── */
-    .hanging-wire {
-      position: absolute;
-      top: 0; left: 50%;
-      transform: translateX(-50%);
-      width: 2px; height: 28px;
-      background: linear-gradient(to bottom, hsl(30,30%,70%), hsl(30,20%,60%));
-      border-radius: 1px;
-      z-index: 1;
-    }
-    .hanging-hook {
-      position: absolute;
-      top: 28px; left: 50%;
-      transform: translateX(-50%);
-      width: 8px; height: 6px;
-      border: 1.5px solid hsl(30,30%,65%);
-      border-bottom: none;
-      border-radius: 3px 3px 0 0;
-    }
-
-    /* -- Section: wallpaper dot pattern, warmer -- */
-    .wallpaper-bg {
-      background-image: radial-gradient(hsla(270,50%,82%,0.22) 2px, transparent 2px),
-                        radial-gradient(hsla(340,70%,88%,0.10) 1px, transparent 1px);
-      background-size: 30px 30px, 15px 15px;
-      background-position: 0 0, 7px 7px;
-    }
-
-    /* -- Project section (skills): subtle bookshelf shadow -- */
-    #skills .skills-wrap {
-      position: relative;
-    }
-    #skills::before {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 6px;
-      background: repeating-linear-gradient(
-        90deg,
-        hsl(30,40%,86%) 0px, hsl(30,40%,86%) 40px,
-        hsl(30,35%,81%) 40px, hsl(30,35%,81%) 42px
-      );
-      opacity: 0.35;
-    }
-
-    /* ── Art & Writing section: cozy curtain hint ── */
-    #art-writing {
-      position: relative;
-    }
-    #art-writing::before, #art-writing::after {
-      content: '';
-      position: absolute;
-      top: 0; width: 28px; height: 100%;
-      pointer-events: none;
-      opacity: 0.12;
-      z-index: 1;
-    }
-    #art-writing::before {
-      left: 0;
-      background: linear-gradient(to right, hsl(270,50%,75%), transparent);
-    }
-    #art-writing::after {
-      right: 0;
-      background: linear-gradient(to left, hsl(340,70%,80%), transparent);
-    }
-
-    /* ── Hero: faint floor line at very bottom ── */
-    #welcome::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 3px;
-      background: repeating-linear-gradient(
-        90deg,
-        hsl(30,40%,83%) 0px, hsl(30,40%,83%) 36px,
-        hsl(30,30%,79%) 36px, hsl(30,30%,79%) 38px
-      );
-      opacity: 0.4;
-      z-index: 11;
-    }
-
-    /* ── String light keyframes ── */
-    @keyframes bulb-glow {
-      0%, 100% { opacity: 0.85; filter: drop-shadow(0 0 3px hsl(45,95%,70%)); }
-      50%       { opacity: 0.55; filter: drop-shadow(0 0 1px hsl(45,95%,70%)); }
-    }
-    .light-bulb { animation: bulb-glow 2.5s ease-in-out infinite; }
-    .light-bulb:nth-child(2)  { animation-delay: 0.4s; }
-    .light-bulb:nth-child(3)  { animation-delay: 0.8s; }
-    .light-bulb:nth-child(4)  { animation-delay: 1.2s; }
-    .light-bulb:nth-child(5)  { animation-delay: 1.6s; }
-    .light-bulb:nth-child(6)  { animation-delay: 2.0s; }
-    .light-bulb:nth-child(7)  { animation-delay: 0.2s; }
-    .light-bulb:nth-child(8)  { animation-delay: 1.0s; }
-    .light-bulb:nth-child(9)  { animation-delay: 1.8s; }
-    .light-bulb:nth-child(10) { animation-delay: 2.4s; }
-
-    /* ── Gumball Machine preview skin ── */
-    .project-preview-gumball {
-      width: 100%; height: 180px;
-      background: #1c1025;
-      position: relative; overflow: hidden; border-radius: 8px 8px 0 0;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .project-preview-gumball::before {
-      content: '';
-      position: absolute; inset: 0;
-      background-image:
-        repeating-linear-gradient(0deg, transparent, transparent 23px, rgba(255,200,230,0.03) 23px, rgba(255,200,230,0.03) 24px),
-        repeating-linear-gradient(90deg, transparent, transparent 23px, rgba(255,200,230,0.03) 23px, rgba(255,200,230,0.03) 24px);
-    }
-    /* floating candy balls */
-    .gball-float {
-      position: absolute;
-      border-radius: 50%;
-      opacity: 0.75;
-      box-shadow: inset -2px -2px 4px rgba(0,0,0,0.2), 1px 1px 3px rgba(255,255,255,0.15);
-      animation: gball-drift 5s ease-in-out infinite;
-    }
-    @keyframes gball-drift {
-      0%, 100% { transform: translateY(0px); }
-      50%       { transform: translateY(-8px); }
-    }
-    /* centred text */
-    .gumball-copy-wrap {
-      position: relative; z-index: 2;
-      display: flex; flex-direction: column;
-      align-items: center; text-align: center;
-      gap: 6px;
-    }
-    .gumball-copy-title {
-      font-family: 'Fraunces', serif;
-      font-size: 1.15rem;
-      font-style: italic;
-      color: #f9a8d4;
-      line-height: 1.25;
-      text-shadow: 0 0 16px rgba(249,168,212,0.35);
-    }
-    .gumball-copy-sub {
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.5rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.3);
-    }
-    .gumball-copy-pill {
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.6rem;
-      letter-spacing: 0.08em;
-      color: #c4b5fd;
-      border: 1px solid rgba(196,181,253,0.3);
-      border-radius: 999px;
-      padding: 2px 10px;
-      margin-top: 2px;
-    }
-
-  </style>
 </head>
 <body>
 
+<!-- ================================================
+     PAPER TEXTURE
+     ================================================ -->
 <div class="paper-texture"></div>
+
+<!-- ================================================
+     CUSTOM CURSOR
+     ================================================ -->
 <img id="custom-cursor" src="https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776934163/Gemini_Generated_Image_wz4n5zwz4n5zwz4n-removebg-preview_1776837947273_hve6jy.png" alt="" aria-hidden="true" />
 
+<!-- ================================================
+     CLOUD LAYER
+     ================================================ -->
+<div class="cloud-layer">
+  <img src="https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776934187/cloud_tebsld.png" alt="" class="cloud cloud-1" loading="lazy" />
+  <img src="https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776934187/cloud_tebsld.png" alt="" class="cloud cloud-2" loading="lazy" />
+  <img src="https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776934187/cloud_tebsld.png" alt="" class="cloud cloud-3" loading="lazy" />
+</div>
 
+<!-- ================================================
+     FLOATING NAV
+     ================================================ -->
 <nav id="floating-nav" aria-label="Main navigation">
   <div class="nav-inner">
     <button class="nav-btn active" data-target="welcome">Welcome</button>
@@ -549,56 +50,40 @@
   </div>
 </nav>
 
+<!-- ================================================
+     MAIN PAGE WRAPPER
+     ================================================ -->
 <div class="page-wrap">
 
-  <!-- 1. HERO -->
+  <!-- 1. HERO / LANDING -->
   <section id="welcome">
-
-    <!-- String lights -->
-    <div class="string-lights" aria-hidden="true">
-      <svg viewBox="0 0 1200 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-        <!-- Wire -->
-        <path d="M0,12 Q120,28 240,12 Q360,28 480,12 Q600,28 720,12 Q840,28 960,12 Q1080,28 1200,12"
-              fill="none" stroke="hsl(30,30%,65%)" stroke-width="1.2" opacity="0.5"/>
-        <!-- Bulbs at the wave troughs -->
-        <g class="light-bulb"><ellipse cx="120" cy="30" rx="5" ry="7" fill="hsl(45,95%,72%)"/><line x1="120" y1="23" x2="120" y2="28" stroke="hsl(30,30%,60%)" stroke-width="1"/></g>
-        <g class="light-bulb"><ellipse cx="240" cy="14" rx="4" ry="6" fill="hsl(340,70%,82%)"/><line x1="240" y1="8"  x2="240" y2="12" stroke="hsl(30,30%,60%)" stroke-width="1"/></g>
-        <g class="light-bulb"><ellipse cx="360" cy="30" rx="5" ry="7" fill="hsl(270,50%,82%)"/><line x1="360" y1="23" x2="360" y2="28" stroke="hsl(30,30%,60%)" stroke-width="1"/></g>
-        <g class="light-bulb"><ellipse cx="480" cy="14" rx="4" ry="6" fill="hsl(45,95%,72%)"/><line x1="480" y1="8"  x2="480" y2="12" stroke="hsl(30,30%,60%)" stroke-width="1"/></g>
-        <g class="light-bulb"><ellipse cx="600" cy="30" rx="5" ry="7" fill="hsl(340,70%,82%)"/><line x1="600" y1="23" x2="600" y2="28" stroke="hsl(30,30%,60%)" stroke-width="1"/></g>
-        <g class="light-bulb"><ellipse cx="720" cy="14" rx="4" ry="6" fill="hsl(270,50%,82%)"/><line x1="720" y1="8"  x2="720" y2="12" stroke="hsl(30,30%,60%)" stroke-width="1"/></g>
-        <g class="light-bulb"><ellipse cx="840" cy="30" rx="5" ry="7" fill="hsl(45,95%,72%)"/><line x1="840" y1="23" x2="840" y2="28" stroke="hsl(30,30%,60%)" stroke-width="1"/></g>
-        <g class="light-bulb"><ellipse cx="960" cy="14" rx="4" ry="6" fill="hsl(340,70%,82%)"/><line x1="960" y1="8"  x2="960" y2="12" stroke="hsl(30,30%,60%)" stroke-width="1"/></g>
-        <g class="light-bulb"><ellipse cx="1080" cy="30" rx="5" ry="7" fill="hsl(270,50%,82%)"/><line x1="1080" y1="23" x2="1080" y2="28" stroke="hsl(30,30%,60%)" stroke-width="1"/></g>
-      </svg>
-    </div>
-
-    <!-- Welcome mat -->
-    <div class="welcome-mat" aria-hidden="true">
-      <div class="welcome-mat-rug"></div>
-      <div class="welcome-mat-fringe">
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
-      </div>
-    </div>
-
     <div class="hero-house-wrap">
       <div class="hero-house-float">
         <img src="https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776934163/Gemini_Generated_Image_uzzmdxuzzmdxuzzm-removebg-preview_1776838049304_y8ypn3.png" alt="Floating Pink House" class="hero-house-img" loading="lazy" />
       </div>
     </div>
+
     <div style="z-index:10; display:flex; flex-direction:column; align-items:center; text-align:center;">
       <div class="hero-card sticker-border">
+        <!-- Spinning sparkle in corner -->
         <span class="hero-sparkle-spin" aria-hidden="true">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+          </svg>
         </span>
-        <h1 class="hero-title">hi, welcome to niah's house <span style="color:var(--primary); font-size:1.1rem;">✿</span></h1>
+
+        <h1 class="hero-title">
+          hi, welcome to niah's house
+          <span style="color:var(--primary); font-size:1.1rem;">✿</span>
+        </h1>
         <p class="hero-subtitle">come in...</p>
+
         <button class="btn-enter" onclick="smoothScrollTo('about')">
           <span style="position:relative;z-index:10;display:flex;align-items:center;gap:0.5rem;">
             Enter
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 11.5C10.5 11.5 8 13 8 15C8 17 10.5 18.5 12 18.5C13.5 18.5 16 17 16 15C16 13 13.5 11.5 12 11.5ZM4.5 6C3 6 2 7 2 8.5C2 10.5 5 12 6.5 12C8 12 10 10.5 10 8.5C10 7 9 6 7.5 6C6.5 6 5.5 6 4.5 6ZM19.5 6C18.5 6 17.5 6 16.5 6C15 6 14 7 14 8.5C14 10.5 16 12 17.5 12C19 12 22 10.5 22 8.5C22 7 21 6 19.5 6Z"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 11.5C10.5 11.5 8 13 8 15C8 17 10.5 18.5 12 18.5C13.5 18.5 16 17 16 15C16 13 13.5 11.5 12 11.5ZM4.5 6C3 6 2 7 2 8.5C2 10.5 5 12 6.5 12C8 12 10 10.5 10 8.5C10 7 9 6 7.5 6C6.5 6 5.5 6 4.5 6ZM19.5 6C18.5 6 17.5 6 16.5 6C15 6 14 7 14 8.5C14 10.5 16 12 17.5 12C19 12 22 10.5 22 8.5C22 7 21 6 19.5 6Z"/>
+            </svg>
           </span>
           <div class="shimmer"></div>
         </button>
@@ -606,29 +91,22 @@
     </div>
   </section>
 
+  <!-- Rooms container -->
   <div style="position:relative;z-index:10;width:100%;display:flex;flex-direction:column;align-items:center;">
 
     <!-- 2. ABOUT -->
-    <section id="about" class="wallpaper-bg" style="width:100%;padding:4.5rem 0;scroll-margin-top:2.5rem;position:relative;">
-      <!-- window decoration -->
-      <div class="window-frame" aria-hidden="true">
-        <svg viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="4" y="4" width="72" height="92" rx="2" stroke="hsl(30,30%,65%)" stroke-width="3"/>
-          <line x1="40" y1="4" x2="40" y2="96" stroke="hsl(30,30%,65%)" stroke-width="2"/>
-          <line x1="4" y1="50" x2="76" y2="50" stroke="hsl(30,30%,65%)" stroke-width="2"/>
-          <rect x="8" y="8" width="28" height="38" rx="1" fill="hsl(200,40%,90%)" opacity="0.3"/>
-          <rect x="44" y="8" width="28" height="38" rx="1" fill="hsl(200,40%,90%)" opacity="0.3"/>
-          <rect x="8" y="54" width="28" height="38" rx="1" fill="hsl(200,40%,90%)" opacity="0.3"/>
-          <rect x="44" y="54" width="28" height="38" rx="1" fill="hsl(200,40%,90%)" opacity="0.3"/>
-        </svg>
-      </div>
+    <section id="about" class="wallpaper-bg" style="width:100%;padding:8rem 0;scroll-margin-top:2.5rem;">
       <div class="section-inner">
         <h2 class="section-title reveal">about me ✿</h2>
+
         <div class="about-grid" style="margin-top:3rem;">
+          <!-- Photo stamp -->
           <div style="display:flex;justify-content:center;" class="reveal">
             <div class="photo-stamp-wrap" style="position:relative;">
               <div class="photo-rotate" style="position:relative;">
+                <!-- Washi tape -->
                 <div class="washi-tape"></div>
+
                 <div class="stamp-body">
                   <div class="stamp-perforation"></div>
                   <div class="stamp-inner">
@@ -644,6 +122,8 @@
                     </div>
                   </div>
                 </div>
+
+                <!-- Postmark -->
                 <div class="postmark">
                   <div class="postmark-inner">
                     <div class="postmark-sincerely">Sincerely</div>
@@ -651,33 +131,37 @@
                     <div class="postmark-flowers">✿ ✿ ✿</div>
                   </div>
                 </div>
+
+                <!-- Sparkle -->
                 <div class="sparkle-float" aria-hidden="true">
-                  <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg>
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/>
+                  </svg>
                 </div>
               </div>
             </div>
           </div>
 
+          <!-- Letter card -->
           <div class="reveal reveal-delay-1">
             <div class="letter-card">
               <div class="letter-tape"></div>
               <div class="letter-bow" aria-hidden="true">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 9.5C10 7 6 5 3 6C1 6.5 2 11 5 13C7.5 14.5 10.5 13.5 12 12C13.5 13.5 16.5 14.5 19 13C22 11 23 6.5 21 6C18 5 14 7 12 9.5Z"/><path d="M12 12C10 16 7 20 5 21C6.5 22 9 19 12 15C15 19 17.5 22 19 21C17 20 14 16 12 12Z"/></svg>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 9.5C10 7 6 5 3 6C1 6.5 2 11 5 13C7.5 14.5 10.5 13.5 12 12C13.5 13.5 16.5 14.5 19 13C22 11 23 6.5 21 6C18 5 14 7 12 9.5Z"/>
+                  <path d="M12 12C10 16 7 20 5 21C6.5 22 9 19 12 15C15 19 17.5 22 19 21C17 20 14 16 12 12Z"/>
+                </svg>
               </div>
               <p class="letter-text">
-                4th-year B.Tech (AI &amp; ML). I make reels, design carousels, write copy, and build things on the web. Sometimes all for the same project, sometimes just because I wanted to see if I could.<br><br>
-                I get obsessed with what makes someone stop. Not just stop scrolling. Stop and actually feel something. That one-second window before they decide to keep going or stay. I spend a lot of time thinking about that window.<br><br>
-                Everything I make starts with a moodboard. Colors, textures, references. Not to copy, just to get the emotional temperature right before I touch anything. The work follows from that.<br><br>
-                Art and poetry are here too, because I can't separate the two. The same instinct that picks a grain texture for a film poster picks the line breaks in a poem.
+                I'm a 4th-year B.Tech (AI &amp; ML) student exploring the intersection of content, creativity, and tech. I create reels, design visual content, and build interactive projects to understand what captures attention and drives engagement.
               </p>
               <div class="letter-quote-box">
                 <div class="letter-quote-pill">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z"/></svg>
                   Experimentation
                 </div>
-                <!-- HUMANIZED: no explaining the punchline, just land it -->
                 <p class="letter-quote-text">
-                  Built an art &amp; visual diary account from zero. 75 followers in month one, all organic. Top reel hit 5.8K views, 30 saves, 60 shares. More shares than saves means people sent it to someone who wasn't even looking. That's the one I care about.
+                  "Built a personal Instagram page centered around art, poetry, and reading, using it to experiment with reels and audience engagement."
                 </p>
               </div>
               <div class="lace-edge" style="position:absolute;bottom:-10px;left:0;width:100%;opacity:0.5;"></div>
@@ -687,32 +171,25 @@
       </div>
     </section>
 
-    <!-- floor edge -->
-    <div class="floor-edge"></div>
-
-    <!-- Doorway divider -->
-    <div class="doorway-divider" aria-hidden="true">
-      <div class="doorway-arch">
-        <svg viewBox="0 0 120 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10,48 L10,20 Q10,4 60,4 Q110,4 110,20 L110,48" stroke="hsl(30,30%,70%)" stroke-width="2.5" fill="none"/>
-          <line x1="0" y1="48" x2="120" y2="48" stroke="hsl(30,30%,70%)" stroke-width="2"/>
-          <circle cx="60" cy="4" r="3" fill="hsl(270,45%,82%)"/>
-        </svg>
-      </div>
-      <div class="doorway-floor"></div>
+    <!-- Divider -->
+    <div class="section-divider" style="z-index:10;">
+      <div class="line"></div>
     </div>
 
-    <!-- 3. WORK -->
-    <section id="work" style="width:100%;padding:4.5rem 0;scroll-margin-top:2.5rem;">
+    <!-- 3. WORK / THINGS I'VE MADE -->
+    <section id="work" style="width:100%;padding:8rem 0;scroll-margin-top:2.5rem;">
       <div class="section-inner">
         <h2 class="section-title reveal">things i've made</h2>
-        <!-- HUMANIZED: removed "crafted to capture both... blending" AI construction -->
-        <p class="work-instagram-intro reveal">Short-form reels for an art and poetry audience. My visual work, my literary voice, same frame.</p>
+        <p class="work-instagram-intro reveal">A series of short-form reels crafted to capture both art and poetry audiences, blending my visual artwork with a literary voice.</p>
 
         <div class="reels-grid">
+          <!-- Reel 1 — Highlight -->
           <div class="reel-window reveal">
             <div class="reel-bow" aria-hidden="true">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 9.5C10 7 6 5 3 6C1 6.5 2 11 5 13C7.5 14.5 10.5 13.5 12 12C13.5 13.5 16.5 14.5 19 13C22 11 23 6.5 21 6C18 5 14 7 12 9.5Z"/><path d="M12 12C10 16 7 20 5 21C6.5 22 9 19 12 15C15 19 17.5 22 19 21C17 20 14 16 12 12Z"/></svg>
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 9.5C10 7 6 5 3 6C1 6.5 2 11 5 13C7.5 14.5 10.5 13.5 12 12C13.5 13.5 16.5 14.5 19 13C22 11 23 6.5 21 6C18 5 14 7 12 9.5Z"/>
+                <path d="M12 12C10 16 7 20 5 21C6.5 22 9 19 12 15C15 19 17.5 22 19 21C17 20 14 16 12 12Z"/>
+              </svg>
             </div>
             <div class="reel-frame">
               <div class="reel-video-wrap highlight">
@@ -729,9 +206,13 @@
             </div>
           </div>
 
+          <!-- Reel 2 -->
           <div class="reel-window reveal reveal-delay-1">
             <div class="reel-bow" aria-hidden="true">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 9.5C10 7 6 5 3 6C1 6.5 2 11 5 13C7.5 14.5 10.5 13.5 12 12C13.5 13.5 16.5 14.5 19 13C22 11 23 6.5 21 6C18 5 14 7 12 9.5Z"/><path d="M12 12C10 16 7 20 5 21C6.5 22 9 19 12 15C15 19 17.5 22 19 21C17 20 14 16 12 12Z"/></svg>
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 9.5C10 7 6 5 3 6C1 6.5 2 11 5 13C7.5 14.5 10.5 13.5 12 12C13.5 13.5 16.5 14.5 19 13C22 11 23 6.5 21 6C18 5 14 7 12 9.5Z"/>
+                <path d="M12 12C10 16 7 20 5 21C6.5 22 9 19 12 15C15 19 17.5 22 19 21C17 20 14 16 12 12Z"/>
+              </svg>
             </div>
             <div class="reel-frame">
               <div class="reel-video-wrap">
@@ -744,9 +225,13 @@
             </div>
           </div>
 
+          <!-- Reel 3 -->
           <div class="reel-window reveal reveal-delay-2">
             <div class="reel-bow" aria-hidden="true">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 9.5C10 7 6 5 3 6C1 6.5 2 11 5 13C7.5 14.5 10.5 13.5 12 12C13.5 13.5 16.5 14.5 19 13C22 11 23 6.5 21 6C18 5 14 7 12 9.5Z"/><path d="M12 12C10 16 7 20 5 21C6.5 22 9 19 12 15C15 19 17.5 22 19 21C17 20 14 16 12 12Z"/></svg>
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 9.5C10 7 6 5 3 6C1 6.5 2 11 5 13C7.5 14.5 10.5 13.5 12 12C13.5 13.5 16.5 14.5 19 13C22 11 23 6.5 21 6C18 5 14 7 12 9.5Z"/>
+                <path d="M12 12C10 16 7 20 5 21C6.5 22 9 19 12 15C15 19 17.5 22 19 21C17 20 14 16 12 12Z"/>
+              </svg>
             </div>
             <div class="reel-frame">
               <div class="reel-video-wrap">
@@ -759,175 +244,132 @@
             </div>
           </div>
         </div>
-        <!-- ── MEOCHA BRAND STRATEGY BREAKDOWN ── -->
-        <div class="meocha-strategy-breakdown reveal" style="margin-top:4rem;">
-          <div class="msb-header">
-            <span class="msb-label">brand strategy</span>
-            <h3 class="msb-title">Why Meocha works. (Or would.)</h3>
+
+        <!-- Meocha / Strategy -->
+        <div class="strategy-section">
+          <span class="strategy-label">"content strategy"</span>
+
+          <div class="strategy-intro">
+            <h3><em>Meocha</em>, a cat café × matcha brand concept.</h3>
+            <p>Built for Gen-Z and millennial city-dwellers who love slow mornings, soft aesthetics, and cat company. The visual identity and content calendar were designed to feel cozy, playful, and quietly indulgent. The kind of place you'd take yourself on a Sunday.</p>
           </div>
 
-          <div class="msb-grid">
-
-            <!-- Audience -->
-            <div class="msb-card">
-              <div class="msb-card-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          <div class="meocha-grid">
+            <div class="reveal">
+              <div class="wood-frame meocha-brand-frame" style="position:relative;">
+                <div class="frame-nail"></div>
+                <div class="frame-nail-line"></div>
+                <img src="https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776886400/Gray_Green_Modern_Beauty_Studio_Skin_Care_Professional_Busines_1776792980213_ijnhex.png" alt="Meocha — cat × matcha cafe brand layout" loading="lazy" />
               </div>
-              <h4 class="msb-card-title">Audience</h4>
-              <p class="msb-card-body">Gen-Z and millennial women, mid-20s, city-based. They're in a 9-to-5 (or they've just left one). They want their weekends to feel like theirs again. Not productive, not curated for social media, just slow. They follow accounts that give them permission to rest. Meocha is for them.</p>
+              <p class="meocha-caption">Brand layout for Meocha (cat × matcha cafe)</p>
             </div>
-
-            <!-- Brand Objective -->
-            <div class="msb-card">
-              <div class="msb-card-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-              </div>
-              <h4 class="msb-card-title">Brand Objective</h4>
-              <p class="msb-card-body">Not to sell matcha. To sell the feeling of a Sunday where nothing is required of you. Meocha is a place (physical or digital) where the burnout crowd goes to exhale. The brand's job is to feel like that before they even walk in the door.</p>
-            </div>
-
-            <!-- Color Rationale -->
-            <div class="msb-card msb-card-wide">
-              <div class="msb-card-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5S18.33 12 17.5 12z"/></svg>
-              </div>
-              <h4 class="msb-card-title">Color Rationale</h4>
-              <div class="msb-palette-row">
-                <div class="msb-swatch-item">
-                  <div class="msb-swatch" style="background:#8fac8f;"></div>
-                  <div class="msb-swatch-text">
-                    <strong>Muted sage</strong>
-                    <span>Nature that nurtures. Not the trendy matcha green. The quiet kind. The color of a plant you've kept alive. It says: you're safe to put your phone down.</span>
-                  </div>
-                </div>
-                <div class="msb-swatch-item">
-                  <div class="msb-swatch" style="background:#f5ede0;"></div>
-                  <div class="msb-swatch-text">
-                    <strong>Warm cream</strong>
-                    <span>Unhurried. A Sunday morning. A page nothing's been written on yet.</span>
-                  </div>
-                </div>
-                <div class="msb-swatch-item">
-                  <div class="msb-swatch" style="background:#c8826e;"></div>
-                  <div class="msb-swatch-text">
-                    <strong>Soft terracotta</strong>
-                    <span>Grounded, human, a little earthy. Keeps the palette from feeling too precious or fragile.</span>
-                  </div>
-                </div>
-                <div class="msb-swatch-item">
-                  <div class="msb-swatch" style="background:#f4b8c1; border:1px solid #e8a0aa;"></div>
-                  <div class="msb-swatch-text">
-                    <strong>Blush pink (accent)</strong>
-                    <span>A cat's inner ear. That specific pink. It's an attention-to-detail choice. If you notice it, you're paying exactly the right kind of attention. That's the Meocha customer.</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Typography Rationale -->
-            <div class="msb-card">
-              <div class="msb-card-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9.93 13.5h4.14L12 7.98zM20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-4.05 16.5l-1.14-3H9.17l-1.12 3H5.96l5.11-13h1.86l5.11 13h-2.09z"/></svg>
-              </div>
-              <h4 class="msb-card-title">Typography</h4>
-              <p class="msb-card-body">The fonts are round-edged and slightly nibbly. The specific reference: a chubby cat's tail. That softness isn't childish. It's deliberately not trying to be sharp or impressive. In a world of sans-serifs performing competence, Meocha's type performs comfort. Every font choice is a brand decision, not a style preference.</p>
-            </div>
-
-            <!-- Content Strategy -->
-            <div class="msb-card">
-              <div class="msb-card-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-              </div>
-              <h4 class="msb-card-title">Content Strategy</h4>
-              <p class="msb-card-body">The 2-week calendar was mapped to day-of-week mood, not just a posting cadence. Weekend posts: soft, atmospheric, no call to action. Weekday posts: acknowledge the grind without amplifying it. The brand never performs positivity. It holds space. That distinction is what makes a content strategy, not just a content schedule.</p>
-            </div>
-
-            <!-- What I rejected -->
-            <div class="msb-card msb-card-accent">
-              <div class="msb-card-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-              </div>
-              <h4 class="msb-card-title">What I rejected</h4>
-              <p class="msb-card-body">The ultra-minimal Japanese-inspired matcha aesthetic that's everywhere right now. Clean whites, sparse layouts, wellness-product energy. Meocha isn't selling a health product. It's selling a place to exhale. Those are different briefs and they need different visual systems.</p>
-            </div>
-
-            <!-- Content Calendar -->
-            <div class="msb-card msb-card-wide reveal">
-              <div class="msb-card-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
-              </div>
-              <h4 class="msb-card-title">Content Calendar</h4>
-              <p class="msb-card-body" style="margin-bottom:1rem;">14 posts across two weeks, mapped to day-of-week mood rather than just a posting schedule. Weekends leaned soft and atmospheric. Weekdays acknowledged the grind without amplifying it. Each post was assigned a content pillar, format, and tone note before a single caption was written.</p>
+            <div class="reveal reveal-delay-1">
               <div class="calendar-frame">
                 <div class="calendar-topbar">
-                  <span class="dot-red"></span><span class="dot-yellow"></span><span class="dot-green"></span>
+                  <span class="dot-red"></span>
+                  <span class="dot-yellow"></span>
+                  <span class="dot-green"></span>
                   <span class="calendar-filename">meocha_content_calendar.xlsx</span>
                 </div>
-                <img src="https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776933655/image_1776793036583_nvqw7y.png" alt="Two-week content calendar for Meocha" loading="lazy" style="width:100%;border-radius:2px;" />
+                <img src="https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776933655/image_1776793036583_nvqw7y.png" alt="Two-week content calendar for Meocha" loading="lazy" />
               </div>
+              <p class="meocha-caption">Two-week content calendar mapped to the brand's tone &amp; visuals</p>
             </div>
-
-
           </div>
         </div>
-        <!-- ── END MEOCHA STRATEGY ── -->
-
       </div>
     </section>
 
-    <!-- floor edge -->
-    <div class="floor-edge"></div>
-
-    <!-- Doorway divider -->
-    <div class="doorway-divider" aria-hidden="true">
-      <div class="doorway-arch">
-        <svg viewBox="0 0 120 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10,48 L10,20 Q10,4 60,4 Q110,4 110,20 L110,48" stroke="hsl(30,30%,70%)" stroke-width="2.5" fill="none"/>
-          <line x1="0" y1="48" x2="120" y2="48" stroke="hsl(30,30%,70%)" stroke-width="2"/>
-          <circle cx="60" cy="4" r="3" fill="hsl(340,65%,84%)"/>
-        </svg>
-      </div>
-      <div class="doorway-floor"></div>
+    <!-- Divider -->
+    <div class="section-divider" style="z-index:10;">
+      <svg class="heart-divider" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z"/>
+      </svg>
     </div>
 
     <!-- 4. BRAND WORK -->
-    <section id="brand-work" class="wallpaper-bg" style="width:100%;padding:4.5rem 0;">
+    <section id="brand-work" class="wallpaper-bg" style="width:100%;padding:8rem 0;">
       <div class="section-inner">
         <h2 class="section-title reveal">brand work</h2>
+
         <div class="brand-cards">
+          <!-- Pet Grooming -->
           <button class="brand-card-btn reveal" onclick="openReelsModal('Pet Grooming', 'petgrooming')">
             <div class="wood-frame brand-card-inner" style="position:relative;">
-              <div class="frame-nail"></div><div class="frame-nail-line"></div>
+              <div class="frame-nail"></div>
+              <div class="frame-nail-line"></div>
               <div class="brand-pattern">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;">
-                  <defs><pattern id="paws" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><g fill="#f7b8c9" opacity="0.28"><circle cx="20" cy="23" r="4"/><circle cx="14" cy="15" r="2"/><circle cx="26" cy="15" r="2"/><circle cx="9" cy="20" r="1.6"/><circle cx="31" cy="20" r="1.6"/></g></pattern></defs>
+                <!-- Paw pattern SVG -->
+                <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;">
+                  <defs>
+                    <pattern id="paws" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                      <g fill="#f7b8c9" opacity="0.28">
+                        <circle cx="20" cy="23" r="4"/>
+                        <circle cx="14" cy="15" r="2"/>
+                        <circle cx="26" cy="15" r="2"/>
+                        <circle cx="9" cy="20" r="1.6"/>
+                        <circle cx="31" cy="20" r="1.6"/>
+                      </g>
+                    </pattern>
+                  </defs>
                   <rect width="100%" height="100%" fill="url(#paws)"/>
-                  <g transform="translate(100 78)" fill="#e08aa1" opacity="0.78"><ellipse cx="0" cy="6" rx="16" ry="13"/><ellipse cx="-15" cy="-12" rx="6" ry="8"/><ellipse cx="15" cy="-12" rx="6" ry="8"/><ellipse cx="-25" cy="2" rx="5" ry="6.5"/><ellipse cx="25" cy="2" rx="5" ry="6.5"/></g>
+                  <g transform="translate(100 78)" fill="#e08aa1" opacity="0.78">
+                    <ellipse cx="0" cy="6" rx="16" ry="13"/>
+                    <ellipse cx="-15" cy="-12" rx="6" ry="8"/>
+                    <ellipse cx="15" cy="-12" rx="6" ry="8"/>
+                    <ellipse cx="-25" cy="2" rx="5" ry="6.5"/>
+                    <ellipse cx="25" cy="2" rx="5" ry="6.5"/>
+                  </g>
                 </svg>
               </div>
               <div style="text-align:center;padding:0 0.5rem 0.5rem;">
                 <h3 class="brand-card-title">Pet Grooming</h3>
-                <!-- HUMANIZED: removed "designed to feel" AI construction, tightened result line -->
-                <p class="brand-card-desc">Reels and carousels about the care experience, not the before-and-after. Pet owners don't follow care accounts to learn. They follow them to feel like good pet parents. So the content felt warm and personal, the way they already talk about their dogs. Direct DMs converting to studio bookings.</p>
+                <p class="brand-card-desc">Content focusing on trust, care, and clean visuals.</p>
                 <p class="brand-card-cta">click to watch the reels →</p>
               </div>
             </div>
           </button>
 
+          <!-- Handicrafts -->
           <button class="brand-card-btn reveal reveal-delay-1" onclick="openReelsModal('Handicrafts', 'handicrafts')">
             <div class="wood-frame brand-card-inner" style="position:relative;">
-              <div class="frame-nail"></div><div class="frame-nail-line"></div>
+              <div class="frame-nail"></div>
+              <div class="frame-nail-line"></div>
               <div class="brand-pattern">
+                <!-- Block print pattern SVG -->
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;">
-                  <defs><pattern id="blockprint" x="0" y="0" width="44" height="44" patternUnits="userSpaceOnUse"><g fill="none" stroke="#e89cb0" stroke-width="0.9" opacity="0.3"><circle cx="22" cy="22" r="6"/><circle cx="22" cy="22" r="2" fill="#e89cb0" stroke="none"/><path d="M22 10 Q25 16 22 22 Q19 16 22 10 Z" fill="#f3c2d0" stroke="none"/><path d="M22 34 Q25 28 22 22 Q19 28 22 34 Z" fill="#f3c2d0" stroke="none"/><path d="M10 22 Q16 19 22 22 Q16 25 10 22 Z" fill="#f3c2d0" stroke="none"/><path d="M34 22 Q28 19 22 22 Q28 25 34 22 Z" fill="#f3c2d0" stroke="none"/></g></pattern></defs>
+                  <defs>
+                    <pattern id="blockprint" x="0" y="0" width="44" height="44" patternUnits="userSpaceOnUse">
+                      <g fill="none" stroke="#e89cb0" stroke-width="0.9" opacity="0.3">
+                        <circle cx="22" cy="22" r="6"/>
+                        <circle cx="22" cy="22" r="2" fill="#e89cb0" stroke="none"/>
+                        <path d="M22 10 Q25 16 22 22 Q19 16 22 10 Z" fill="#f3c2d0" stroke="none"/>
+                        <path d="M22 34 Q25 28 22 22 Q19 28 22 34 Z" fill="#f3c2d0" stroke="none"/>
+                        <path d="M10 22 Q16 19 22 22 Q16 25 10 22 Z" fill="#f3c2d0" stroke="none"/>
+                        <path d="M34 22 Q28 19 22 22 Q28 25 34 22 Z" fill="#f3c2d0" stroke="none"/>
+                      </g>
+                    </pattern>
+                  </defs>
                   <rect width="100%" height="100%" fill="url(#blockprint)"/>
-                  <g transform="translate(100 75)" opacity="0.85"><g fill="#f0a8bd"><ellipse cx="0" cy="-22" rx="9" ry="16"/><ellipse cx="0" cy="22" rx="9" ry="16"/><ellipse cx="-22" cy="0" rx="16" ry="9"/><ellipse cx="22" cy="0" rx="16" ry="9"/><ellipse cx="-15.5" cy="-15.5" rx="9" ry="14" transform="rotate(-45 -15.5 -15.5)"/><ellipse cx="15.5" cy="-15.5" rx="9" ry="14" transform="rotate(45 15.5 -15.5)"/><ellipse cx="-15.5" cy="15.5" rx="9" ry="14" transform="rotate(45 -15.5 15.5)"/><ellipse cx="15.5" cy="15.5" rx="9" ry="14" transform="rotate(-45 15.5 15.5)"/></g><circle cx="0" cy="0" r="9" fill="#e08aa1"/><circle cx="0" cy="0" r="4" fill="#fff5f8"/></g>
+                  <g transform="translate(100 75)" opacity="0.85">
+                    <g fill="#f0a8bd">
+                      <ellipse cx="0" cy="-22" rx="9" ry="16"/>
+                      <ellipse cx="0" cy="22" rx="9" ry="16"/>
+                      <ellipse cx="-22" cy="0" rx="16" ry="9"/>
+                      <ellipse cx="22" cy="0" rx="16" ry="9"/>
+                      <ellipse cx="-15.5" cy="-15.5" rx="9" ry="14" transform="rotate(-45 -15.5 -15.5)"/>
+                      <ellipse cx="15.5" cy="-15.5" rx="9" ry="14" transform="rotate(45 15.5 -15.5)"/>
+                      <ellipse cx="-15.5" cy="15.5" rx="9" ry="14" transform="rotate(45 -15.5 15.5)"/>
+                      <ellipse cx="15.5" cy="15.5" rx="9" ry="14" transform="rotate(-45 15.5 15.5)"/>
+                    </g>
+                    <circle cx="0" cy="0" r="9" fill="#e08aa1"/>
+                    <circle cx="0" cy="0" r="4" fill="#fff5f8"/>
+                  </g>
                 </svg>
               </div>
               <div style="text-align:center;padding:0 0.5rem 0.5rem;">
                 <h3 class="brand-card-title">Handicrafts</h3>
-                <!-- HUMANIZED: removed "earns attention when it feels human" AI-ism, made punchy -->
-                <p class="brand-card-desc">Reels that showed the making, not the finished thing. Handmade work loses when it's too polished. It wins when you can feel the hands in it. The content led with process and the story behind each piece. Measurable website traffic, and people sharing it without being asked.</p>
+                <p class="brand-card-desc">Aesthetic storytelling and product-focused visuals.</p>
                 <p class="brand-card-cta">click to watch the reels →</p>
               </div>
             </div>
@@ -937,221 +379,145 @@
     </section>
 
     <!-- 5. CREATIVE WORK -->
-    <section id="creative-work" style="width:100%;padding:4.5rem 0;">
+    <section id="creative-work" style="width:100%;padding:8rem 0;">
       <div class="section-inner">
         <h2 class="section-title reveal">creative work</h2>
-        <!-- HUMANIZED: removed "A collection of visual work exploring" AI opener -->
-        <p class="creative-intro reveal">Poster work. Layout, typography, aesthetic decisions with reasons behind them.</p>
+        <p class="creative-intro reveal">
+          A collection of visual work exploring layout, typography, and aesthetic storytelling.
+        </p>
+
         <div class="posters-grid">
-          <div class="poster-item rot-neg-2 reveal" style="position:relative;">
-            <div class="hanging-wire" aria-hidden="true"></div>
-            <div class="hanging-hook" aria-hidden="true"></div>
+          <div class="poster-item rot-neg-2 reveal">
             <button class="poster-btn" onclick="openPosterModal('https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776886401/CRUMBS_1__1776793866228_zldkt7.png', 'CRUMBS')" aria-label="View larger image of CRUMBS">
               <img src="https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776886401/CRUMBS_1__1776793866228_zldkt7.png" alt="CRUMBS short film poster" loading="lazy" />
             </button>
             <div class="poster-label">
               <h3 class="poster-title">CRUMBS <span class="poster-sub">(short film)</span></h3>
-              <!-- HUMANIZED: replaced vague "quiet storytelling" line with actual rationale -->
-              <p class="poster-desc">A film about a woman who's exhausted. Not loudly, just completely. Warm tones gone stale, heavy grain, a composition that feels a little tired on purpose.</p>
+              <p class="poster-desc">A narrative poster focusing on quiet storytelling and everyday emotional detail.</p>
             </div>
           </div>
-          <div class="poster-item rot-pos-1 reveal reveal-delay-1" style="position:relative;">
-            <div class="hanging-wire" aria-hidden="true"></div>
-            <div class="hanging-hook" aria-hidden="true"></div>
+
+          <div class="poster-item rot-pos-1 reveal reveal-delay-1">
             <button class="poster-btn" onclick="openPosterModal('https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776886398/I_WILL_DREAM_2__1776795101330_cwfts6.png', 'I WILL DREAM')" aria-label="View larger image of I WILL DREAM">
               <img src="https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776886398/I_WILL_DREAM_2__1776795101330_cwfts6.png" alt="I WILL DREAM poster" loading="lazy" />
             </button>
             <div class="poster-label">
               <h3 class="poster-title">I WILL DREAM <span class="poster-sub">(poster)</span></h3>
-              <p class="poster-desc">About nostalgia and fragmentation: the feeling of a memory you can't quite hold. The font is bold and deliberate, an angry exploration of longing. Red for that edge: nostalgia isn't always soft.</p>
+              <p class="poster-desc">Exploring distortion and nostalgia through low-resolution, fragmented imagery.</p>
             </div>
           </div>
-          <div class="poster-item rot-neg-1 reveal reveal-delay-2" style="position:relative;">
-            <div class="hanging-wire" aria-hidden="true"></div>
-            <div class="hanging-hook" aria-hidden="true"></div>
+
+          <div class="poster-item rot-neg-1 reveal reveal-delay-2">
             <button class="poster-btn" onclick="openPosterModal('https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776886401/under_observation_1__1776793866228_jiyju9.png', 'UNDER OBSERVATION')" aria-label="View larger image of UNDER OBSERVATION">
               <img src="https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776886401/under_observation_1__1776793866228_jiyju9.png" alt="UNDER OBSERVATION poster" loading="lazy" />
             </button>
             <div class="poster-label">
               <h3 class="poster-title">UNDER OBSERVATION <span class="poster-sub">(poster)</span></h3>
-              <p class="poster-desc">About being under someone's lens all the time. The eyes are the focal point, repeated, because that's what surveillance feels like. The composition is kept intentionally clear so the work reads immediately.</p>
+              <p class="poster-desc">A study of repetition, surveillance, and visual layering in constrained compositions.</p>
             </div>
           </div>
         </div>
+
         <div class="shelf-line" style="width:100%;margin-top:2rem;"></div>
       </div>
     </section>
 
     <!-- 6. PROJECTS -->
-    <section id="projects" class="wallpaper-bg" style="width:100%;padding:4.5rem 0;scroll-margin-top:2.5rem;">
+    <section id="projects" class="wallpaper-bg" style="width:100%;padding:8rem 0;scroll-margin-top:2.5rem;">
       <div class="section-inner">
         <h2 class="section-title reveal">projects</h2>
-        <div style="margin-top:4rem; display:flex; flex-direction:column; gap:0;">
 
-          <!-- LAVENDER'S RUN -->
-          <div class="project-card-v2 reveal">
-            <div class="project-preview-lavender">
-              <!-- floating pixel fragments -->
-              <div class="lav-pixel" style="width:6px;height:6px;background:#ff3fa4;top:18%;left:10%;animation-delay:0s;"></div>
-              <div class="lav-pixel" style="width:4px;height:4px;background:#e8d44d;top:65%;left:7%;animation-delay:0.6s;"></div>
-              <div class="lav-pixel" style="width:5px;height:5px;background:#c084f5;top:30%;left:82%;animation-delay:1.1s;"></div>
-              <div class="lav-pixel" style="width:6px;height:6px;background:#e8d44d;top:72%;left:88%;animation-delay:0.3s;"></div>
-              <div class="lav-pixel" style="width:3px;height:3px;background:#ff3fa4;top:80%;left:40%;animation-delay:1.5s;"></div>
-              <div class="lav-pixel" style="width:4px;height:8px;background:#c084f5;top:12%;left:55%;animation-delay:0.9s;"></div>
-              <div class="lav-pixel" style="width:8px;height:4px;background:#ff3fa4;top:55%;left:25%;animation-delay:1.8s;"></div>
-              <div class="pixel-blob"><div class="pixel-blob-inner"></div></div>
-              <div class="pixel-title">lavender's run<br><span class="pixel-sub">escape before monday morning</span></div>
+        <div style="margin-top:4rem;">
+          <!-- Gumball Machine -->
+          <div class="project-card reveal">
+            <div class="project-img-wrap">
+              <img src="https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776934248/gumball_jywn8r.png" alt="Gumball Machine" loading="lazy" />
             </div>
-            <div class="project-content-v2">
-              <div class="project-tag-row">
-                <span class="project-tag tag-live">Live Project</span>
-                <span class="project-tag tag-game">Game Design</span>
-                <span class="project-tag tag-interactive">Interactive</span>
-              </div>
-              <h3 class="project-title" style="margin-bottom:0.5rem;">Lavender's Run</h3>
-              <!-- HUMANIZED: punchy, short declaratives, no inflated framing -->
-              <p class="project-desc">Lavender is done. She quits. This is a Pac-Man riff built from a brief I gave myself: what if a classic arcade mechanic was about burnout instead of dots? Lavender is a hand-drawn original character (designed, named, and animated by me) navigating an office she's trying to leave. The collectibles are unread emails. The start button says "submit resignation."</p>
-              <p class="project-rationale">The concept, the copy, the character, and the code are all mine. CRUMBS, Meocha, this game. They keep asking the same question: what does it feel like when someone needs out?</p>
-              <div class="project-links-row">
-                <a href="https://nianiaxj.github.io/lavender-runs/" target="_blank" rel="noopener noreferrer" class="project-link">
-                  Play it
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                </a>
-              </div>
+            <div class="project-content">
+              <div class="project-badge">Live Project</div>
+              <h3 class="project-title">Gumball Affirmation Machine</h3>
+              <p class="project-desc">An interactive web-based project where users receive random affirmations through a playful gumball machine experience.</p>
+              <a href="https://nianiaxj.github.io/Gumball-Affirmations/" target="_blank" rel="noopener noreferrer" class="project-link">
+                Try it out
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+                  <polyline points="15,3 21,3 21,9"/>
+                  <line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
             </div>
           </div>
 
-          <!-- INSGHT -->
-          <div class="project-card-v2 reveal reveal-delay-1">
-            <div class="project-preview-insght">
-              <!-- floating sparkle stars -->
-              <div class="insght-star" style="top:12%;left:6%;width:14px;height:14px;animation-delay:0s;"></div>
-              <div class="insght-star" style="top:60%;left:3%;width:8px;height:8px;animation-delay:0.8s;opacity:0.4;"></div>
-              <div class="insght-star" style="top:20%;right:5%;width:18px;height:18px;animation-delay:0.4s;"></div>
-              <div class="insght-star" style="top:70%;right:8%;width:10px;height:10px;animation-delay:1.3s;opacity:0.5;"></div>
-              <div class="insght-star" style="top:40%;right:22%;width:6px;height:6px;animation-delay:1.7s;opacity:0.35;"></div>
-              <div class="insght-star" style="top:85%;left:30%;width:8px;height:8px;animation-delay:0.6s;opacity:0.4;"></div>
-              <div class="insght-label">/ social telemetry</div>
-              <div class="insght-title">INSGH T</div>
-              <div class="insght-row">
-                <div class="insght-stat"><span class="insght-stat-label">Reel Views</span><span class="insght-stat-val">15.0K</span></div>
-                <div class="insght-stat"><span class="insght-stat-label">Eng. Rate</span><span class="insght-stat-val">4.8%</span></div>
-                <div class="insght-stat"><span class="insght-stat-label">Audience</span><span class="insght-stat-val">75</span></div>
-              </div>
-              <div class="insght-line"></div>
-            </div>
-            <div class="project-content-v2">
-              <div class="project-tag-row">
-                <span class="project-tag tag-live">Live Project</span>
-                <span class="project-tag tag-data">Data Viz</span>
-                <span class="project-tag tag-interactive">UI Design</span>
-              </div>
-              <h3 class="project-title" style="margin-bottom:0.5rem;">INSGHT: Social Telemetry</h3>
-              <!-- HUMANIZED: removed "form and function are not opposites" cliche, tightened argument -->
-              <p class="project-desc">What if Instagram analytics felt like checking your blog stats in 2003? INSGHT is a real data dashboard dressed in an early-2000s internet skin. Pink on dark. Monospaced type. A scrolling ticker. Your actual numbers (views, reach, profile visits, engagement rate), just wearing something better.</p>
-              <p class="project-rationale">The same data looks different depending on how it's framed. The design is the argument.</p>
-              <div class="project-links-row">
-                <a href="https://insght-9y6bg9fn5-niah-s-projects2.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">
-                  View dashboard
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- GUMBALL MACHINE -->
-          <!-- GUMBALL MACHINE: matches project-card-v2 style -->
-          <div class="project-card-v2 reveal reveal-delay-2">
-            <!-- Styled preview skin -->
-            <div class="project-preview-gumball" aria-hidden="true">
-              <!-- floating balls scattered in background -->
-              <div class="gball-float" style="width:18px;height:18px;background:#f9a8d4;top:14%;left:8%;animation-delay:0s;"></div>
-              <div class="gball-float" style="width:12px;height:12px;background:#c4b5fd;top:58%;left:4%;animation-delay:0.7s;"></div>
-              <div class="gball-float" style="width:22px;height:22px;background:#fde68a;top:22%;left:18%;animation-delay:1.1s;"></div>
-              <div class="gball-float" style="width:10px;height:10px;background:#6ee7b7;top:70%;left:20%;animation-delay:0.3s;"></div>
-              <div class="gball-float" style="width:16px;height:16px;background:#c4b5fd;top:10%;right:12%;animation-delay:1.4s;"></div>
-              <div class="gball-float" style="width:20px;height:20px;background:#f9a8d4;top:65%;right:8%;animation-delay:0.5s;"></div>
-              <div class="gball-float" style="width:13px;height:13px;background:#fde68a;top:40%;right:18%;animation-delay:1.8s;"></div>
-              <div class="gball-float" style="width:8px;height:8px;background:#6ee7b7;top:80%;right:25%;animation-delay:0.9s;"></div>
-              <!-- centred text -->
-              <div class="gumball-copy-wrap">
-                <div class="gumball-copy-sub">interactive web</div>
-                <div class="gumball-copy-title">gumball<br>affirmation<br>machine</div>
-                <div class="gumball-copy-pill">insert coin ✿</div>
-              </div>
-            </div>
-            <div class="project-content-v2">
-              <div class="project-tag-row">
-                <span class="project-tag tag-live">Live Project</span>
-                <span class="project-tag tag-interactive">Interactive</span>
-              </div>
-              <h3 class="project-title" style="margin-bottom:0.5rem;">Gumball Affirmation Machine</h3>
-              <p class="project-desc">What if a reward mechanic (usually reserved for discounts and gamification) was used to give people something they actually needed? The gumball machine is a familiar, childhood-coded interaction. Dropping a coin and getting something random. Here, the random thing is an affirmation. The ritual is the point.</p>
-              <div class="project-links-row">
-                <a href="https://nianiaxj.github.io/Gumball-Affirmations/" target="_blank" rel="noopener noreferrer" class="project-link">
-                  Try it out
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                </a>
-              </div>
-            </div>
-          </div>
+          <!-- Future concept -->
+          <div class="project-future reveal reveal-delay-1" style="margin-top:2rem;">
+            <div class="future-label">Future Lab</div>
             <h4>Gamified Claw Machine</h4>
             <p>A conceptual interactive experience for rewards and discounts.</p>
           </div>
-
         </div>
       </div>
     </section>
 
     <!-- 7. SKILLS & TOOLS -->
-    <section id="skills" style="width:100%;padding:3.5rem 0;">
+    <section id="skills" style="width:100%;padding:5rem 0;">
       <div class="skills-wrap">
         <h3 class="skills-heading">skills &amp; tools</h3>
 
-        <p class="skills-category-label">how i think</p>
+        <p class="skills-category-label">skills</p>
         <div class="pills-row">
-          <div class="skill-pill">Copywriting</div>
-          <div class="skill-pill">Content strategy</div>
+          <div class="skill-pill">Content ideation</div>
           <div class="skill-pill">Hook writing</div>
-          <div class="skill-pill">Cold email</div>
           <div class="skill-pill">Short-form storytelling</div>
           <div class="skill-pill">Visual storytelling</div>
-          <div class="skill-pill">Brand voice &amp; tone</div>
-          <div class="skill-pill">Audience insight</div>
           <div class="skill-pill">Content planning</div>
+          <div class="skill-pill">Audience-focused content</div>
           <div class="skill-pill">Creative experimentation</div>
         </div>
         <div class="shelf-line" style="max-width:32rem;margin:0 auto 3rem;"></div>
 
-        <p class="skills-category-label">what i use</p>
+        <p class="skills-category-label">tools</p>
         <div class="pills-row">
           <div class="skill-pill">
-            <span class="pill-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.5 13.5c-.28.28-.72.28-1 0L12 12l-3.5 3.5c-.28.28-.72.28-1 0s-.28-.72 0-1L11 11 7.5 7.5c-.28-.28-.28-.72 0-1s.72-.28 1 0L12 10l3.5-3.5c.28-.28.72-.28 1 0s.28.72 0 1L13 11l3.5 3.5c.28.28.28.72 0 1z"/></svg></span>
+            <span class="pill-icon">
+              <!-- Canva icon -->
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.5 13.5c-.28.28-.72.28-1 0L12 12l-3.5 3.5c-.28.28-.72.28-1 0s-.28-.72 0-1L11 11 7.5 7.5c-.28-.28-.28-.72 0-1s.72-.28 1 0L12 10l3.5-3.5c.28-.28.72-.28 1 0s.28.72 0 1L13 11l3.5 3.5c.28.28.28.72 0 1z"/></svg>
+            </span>
             Canva
           </div>
           <div class="skill-pill">
-            <span class="pill-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></span>
+            <span class="pill-icon">
+              <!-- Instagram icon -->
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </span>
             Instagram
           </div>
           <div class="skill-pill">
-            <span class="pill-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414v-.001z"/></svg></span>
-            HTML / CSS
-          </div>
-          <div class="skill-pill">
-            <span class="pill-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
-            Website building
-          </div>
-          <div class="skill-pill">
-            <span class="pill-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05L0 11.97l.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/></svg></span>
-            Python
-          </div>
-          <div class="skill-pill">
-            <span class="pill-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21.17 3.25Q21.5 3.25 21.76 3.5 22 3.74 22 4.08V19.92Q22 20.26 21.76 20.5 21.5 20.75 21.17 20.75H7.83Q7.5 20.75 7.24 20.5 7 20.26 7 19.92V17H2.83Q2.5 17 2.24 16.76 2 16.5 2 16.17V7.83Q2 7.5 2.24 7.24 2.5 7 2.83 7H7V4.08Q7 3.74 7.24 3.5 7.5 3.25 7.83 3.25M7 13.06L8.18 15.28H9.97L8.07 12.06L9.93 8.89H8.22L7.13 10.9 7.09 10.96 7.06 11.03Q6.8 10.5 6.5 9.96 6.25 9.43 5.97 8.89H4.16L6.05 12.08 4 15.28H5.78M13.88 19.5V17H8.25V19.5M13.88 15.75V12.63H11V15.75M13.88 11.38V8.5H11V11.38M13.88 7.25V4.5H8.25V7.25M20.75 19.5V17H15.13V19.5M20.75 15.75V12.63H15.13V15.75M20.75 11.38V8.5H15.13V11.38M20.75 7.25V4.5H15.13V7.25Z"/></svg></span>
+            <span class="pill-icon">
+              <!-- Excel icon -->
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21.17 3.25Q21.5 3.25 21.76 3.5 22 3.74 22 4.08V19.92Q22 20.26 21.76 20.5 21.5 20.75 21.17 20.75H7.83Q7.5 20.75 7.24 20.5 7 20.26 7 19.92V17H2.83Q2.5 17 2.24 16.76 2 16.5 2 16.17V7.83Q2 7.5 2.24 7.24 2.5 7 2.83 7H7V4.08Q7 3.74 7.24 3.5 7.5 3.25 7.83 3.25M7 13.06L8.18 15.28H9.97L8.07 12.06L9.93 8.89H8.22L7.13 10.9 7.09 10.96 7.06 11.03Q6.8 10.5 6.5 9.96 6.25 9.43 5.97 8.89H4.16L6.05 12.08 4 15.28H5.78M13.88 19.5V17H8.25V19.5M13.88 15.75V12.63H11V15.75M13.88 11.38V8.5H11V11.38M13.88 7.25V4.5H8.25V7.25M20.75 19.5V17H15.13V19.5M20.75 15.75V12.63H15.13V15.75M20.75 11.38V8.5H15.13V11.38M20.75 7.25V4.5H15.13V7.25Z"/></svg>
+            </span>
             Excel
           </div>
           <div class="skill-pill">
-            <span class="pill-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 19h20L12 2zm0 3l7.5 13h-15L12 5z"/></svg></span>
+            <span class="pill-icon">
+              <!-- Claude / Anthropic icon simplified -->
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 19h20L12 2zm0 3l7.5 13h-15L12 5z"/></svg>
+            </span>
             Claude
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon">
+              <!-- HTML5 icon -->
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414v-.001z"/></svg>
+            </span>
+            HTML/CSS
+          </div>
+          <div class="skill-pill">
+            <span class="pill-icon">
+              <!-- Python icon -->
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05L0 11.97l.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98l-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95l.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25l-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/></svg>
+            </span>
+            Python
           </div>
         </div>
         <div class="shelf-line" style="max-width:32rem;margin:0 auto;"></div>
@@ -1159,28 +525,43 @@
     </section>
 
     <!-- 8. ART & WRITING -->
-    <section id="art-writing" class="wallpaper-bg" style="width:100%;padding:3.5rem 0;scroll-margin-top:2.5rem;">
+    <section id="art-writing" class="wallpaper-bg" style="width:100%;padding:6rem 0;scroll-margin-top:2.5rem;">
       <div class="section-inner" style="text-align:center;">
         <h2 class="section-title reveal">art &amp; writing ✿</h2>
-        <p class="art-intro">i'm a poet and artist, exploring the emotional realities of young womanhood and using art to make sense of it</p>
+        <p class="art-intro">
+          i'm a poet and artist, exploring the emotional realities of young womanhood and using art to make sense of it
+        </p>
+
         <div class="art-doors">
+          <!-- Art card -->
           <button class="art-door-btn reveal" onclick="openRoomModal('art')">
             <div class="door-top-icon" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 9.5C10 7 6 5 3 6C1 6.5 2 11 5 13C7.5 14.5 10.5 13.5 12 12C13.5 13.5 16.5 14.5 19 13C22 11 23 6.5 21 6C18 5 14 7 12 9.5Z"/><path d="M12 12C10 16 7 20 5 21C6.5 22 9 19 12 15C15 19 17.5 22 19 21C17 20 14 16 12 12Z"/></svg>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 9.5C10 7 6 5 3 6C1 6.5 2 11 5 13C7.5 14.5 10.5 13.5 12 12C13.5 13.5 16.5 14.5 19 13C22 11 23 6.5 21 6C18 5 14 7 12 9.5Z"/>
+                <path d="M12 12C10 16 7 20 5 21C6.5 22 9 19 12 15C15 19 17.5 22 19 21C17 20 14 16 12 12Z"/>
+              </svg>
             </div>
             <div class="door-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.04 2 11.5c0 4.41 3.55 7.5 7.5 7.5.62 0 1.12-.5 1.12-1.12 0-.29-.11-.55-.29-.74-.18-.2-.29-.46-.29-.75 0-.62.5-1.12 1.12-1.12H12c4.41 0 8-3.59 8-8 0-3.04-3.59-6.5-8-6.5zm-5.5 9.5c-.83 0-1.5-.67-1.5-1.5S5.67 8.5 6.5 8.5 8 9.17 8 10s-.67 1.5-1.5 1.5zm3-4C8.67 7.5 8 6.83 8 6s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm5 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3 4c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.04 2 11.5c0 4.41 3.55 7.5 7.5 7.5.62 0 1.12-.5 1.12-1.12 0-.29-.11-.55-.29-.74-.18-.2-.29-.46-.29-.75 0-.62.5-1.12 1.12-1.12H12c4.41 0 8-3.59 8-8 0-3.04-3.59-6.5-8-6.5zm-5.5 9.5c-.83 0-1.5-.67-1.5-1.5S5.67 8.5 6.5 8.5 8 9.17 8 10s-.67 1.5-1.5 1.5zm3-4C8.67 7.5 8 6.83 8 6s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm5 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3 4c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+              </svg>
             </div>
             <h3 class="door-title">Art</h3>
             <p class="door-subtitle">paintings, sketches, soft little things</p>
             <p class="door-cta">peek inside →</p>
           </button>
+
+          <!-- Poetry card -->
           <button class="art-door-btn reveal reveal-delay-1" onclick="openRoomModal('poetry')">
             <div class="door-top-icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z"/>
+              </svg>
             </div>
             <div class="door-icon-wrap">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 21c3-1 6-3 9-7 2.5-3.4 4-6 5.5-9 .8 2 1.5 4.5 1 7-.5 2.5-2 5-4 7-2 2-5 3-7 3-1.5 0-3 0-4.5-.5-.5-.2-.5-.5 0-.5z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3 21c3-1 6-3 9-7 2.5-3.4 4-6 5.5-9 .8 2 1.5 4.5 1 7-.5 2.5-2 5-4 7-2 2-5 3-7 3-1.5 0-3 0-4.5-.5-.5-.2-.5-.5 0-.5z"/>
+              </svg>
             </div>
             <h3 class="door-title">Poetry</h3>
             <p class="door-subtitle">words for the in-between feelings</p>
@@ -1191,9 +572,10 @@
     </section>
 
     <!-- 9. CONTACT -->
-    <section id="contact" style="width:100%;padding:4rem 0 5rem;scroll-margin-top:2.5rem;">
+    <section id="contact" style="width:100%;padding:5rem 0 8rem;scroll-margin-top:2.5rem;">
       <div class="section-inner">
         <h2 class="section-title reveal">contact</h2>
+
         <div class="contact-inner" style="margin-top:4rem;">
           <div class="door-illustration">
             <div class="door-ring">
@@ -1201,18 +583,27 @@
               <img src="https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776934249/tiny-door_qtereg.png" alt="" class="door-img" loading="lazy" onerror="this.style.display='none'" />
             </div>
           </div>
+
           <div class="contact-card reveal">
             <div class="contact-bow" aria-hidden="true">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12 9.5C10 7 6 5 3 6C1 6.5 2 11 5 13C7.5 14.5 10.5 13.5 12 12C13.5 13.5 16.5 14.5 19 13C22 11 23 6.5 21 6C18 5 14 7 12 9.5Z"/><path d="M12 12C10 16 7 20 5 21C6.5 22 9 19 12 15C15 19 17.5 22 19 21C17 20 14 16 12 12Z"/></svg>
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 9.5C10 7 6 5 3 6C1 6.5 2 11 5 13C7.5 14.5 10.5 13.5 12 12C13.5 13.5 16.5 14.5 19 13C22 11 23 6.5 21 6C18 5 14 7 12 9.5Z"/>
+                <path d="M12 12C10 16 7 20 5 21C6.5 22 9 19 12 15C15 19 17.5 22 19 21C17 20 14 16 12 12Z"/>
+              </svg>
             </div>
             <p class="contact-quote">"Open to internships and freelance opportunities."</p>
             <div class="contact-links">
               <a href="mailto:ananiah.biju@gmail.com" class="contact-link">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
                 ananiah.biju@gmail.com
               </a>
               <a href="https://instagram.com/niaxbones" target="_blank" rel="noopener noreferrer" class="contact-link">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
                 @niaxbones
               </a>
             </div>
@@ -1221,13 +612,15 @@
       </div>
     </section>
 
-    <!-- 10. CLOSING -->
+    <!-- 10. CLOSING BEACH SCENE -->
     <section id="closing" style="z-index:10;">
       <div class="closing-img-wrap">
         <img src="https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776886398/WhatsApp_Image_2026-04-22_at_11.10.04_1776836992036_a0pfkd.jpg" alt="silhouette by the sea at sunset" class="closing-img" />
         <div class="closing-tint-1"></div>
       </div>
-      <div class="closing-text"><p>thanks for visiting ✿</p></div>
+      <div class="closing-text">
+        <p>thanks for visiting ✿</p>
+      </div>
     </section>
 
     <!-- 11. FOOTER -->
@@ -1237,32 +630,46 @@
       <p class="footer-copy">© 2026 Ananiah. All rights reserved.</p>
     </footer>
 
-  </div>
-</div>
+  </div><!-- /page-wrap rooms container -->
+</div><!-- /page-wrap -->
 
-<!-- MODALS -->
+
+<!-- ================================================
+     MODALS
+     ================================================ -->
+
+<!-- Reels Modal -->
 <div id="modal-reels" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-reels-title" onclick="closeModal('modal-reels')">
   <div class="modal-box" onclick="event.stopPropagation()">
     <button class="modal-close" onclick="closeModal('modal-reels')" aria-label="Close">×</button>
-    <h3 class="modal-title" id="modal-reels-title" style="display:none;"></h3>
+    <h3 class="modal-title" id="modal-reels-title">Reels</h3>
+    <p class="modal-subtitle">a peek inside the reels</p>
     <div class="reels-videos" id="reels-videos-container"></div>
   </div>
 </div>
+
+<!-- Poster Lightbox -->
 <div id="modal-poster" class="modal-overlay" role="dialog" aria-modal="true" onclick="closeModal('modal-poster')">
   <div class="modal-box poster-modal-box" onclick="event.stopPropagation()" style="position:relative;">
     <button class="modal-close" onclick="closeModal('modal-poster')" aria-label="Close" style="background:white;position:absolute;top:-0.75rem;right:-0.75rem;">×</button>
     <img id="poster-lightbox-img" src="" alt="" />
   </div>
 </div>
+
+<!-- Art / Poetry Room Modal -->
 <div id="modal-room" class="modal-overlay" role="dialog" aria-modal="true" onclick="closeModal('modal-room')">
   <div class="modal-box" onclick="event.stopPropagation()" style="max-width:48rem;padding:2rem 2.5rem;my:2rem;">
     <button class="modal-close" onclick="closeModal('modal-room')" aria-label="Close">×</button>
-    <h3 class="modal-title" id="modal-room-title" style="display:none;"></h3>
-    <p class="modal-subtitle" id="modal-room-subtitle" style="display:none;"></p>
+    <h3 class="modal-title" id="modal-room-title">Art Room</h3>
+    <p class="modal-subtitle" id="modal-room-subtitle">a small gallery, soft and slow</p>
     <div id="modal-room-content"></div>
   </div>
 </div>
 
+
+<!-- ================================================
+     SCRIPTS
+     ================================================ -->
 <script src="script.js"></script>
 </body>
 </html>
