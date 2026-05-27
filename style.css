@@ -10,15 +10,9 @@
   transition: width 0.1s linear;
 }
 
-/* Cursor hover scale */
+/* Cursor hover: handled by JS directly (size change) */
 #custom-cursor.cursor-hover {
-  transform-origin: center center;
   filter: drop-shadow(0 2px 3px rgba(0,0,0,0.18)) brightness(1.1);
-  animation: cursor-pop 0.3s cubic-bezier(0.34,1.56,0.64,1) forwards;
-}
-@keyframes cursor-pop {
-  from { width: 84px; height: 84px; }
-  to   { width: 96px; height: 96px; }
 }
 
 /* ── Letter card wiggle on scroll entry ── */
@@ -105,17 +99,8 @@
   box-shadow: 0 8px 28px rgba(200,140,200,0.28);
 }
 
-/* ── Brand card: lift + border glow on hover ── */
-.brand-card-btn:hover .brand-card-inner {
-  transform: translateY(-6px) rotate(-0.5deg);
-  box-shadow: 0 12px 36px rgba(200,140,160,0.18),
-              inset 0 0 10px rgba(0,0,0,0.1);
-  border-color: hsl(270,50%,78%);
-}
-.brand-card-inner {
-  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1),
-              box-shadow 0.35s ease, border-color 0.35s ease;
-}
+/* brand card hover: handled by JS */
+.brand-card-inner { transition: transform 0.25s ease; }
 
 /* ── Art door: handled by JS, but ensure smooth base ── */
 .art-door-btn {
@@ -212,3 +197,136 @@
 .letter-quote-pill {
   animation: pulse-badge 3s ease-in-out infinite;
 }
+
+/* ============================================
+   DESKTOP LAYOUT FIXES
+   ============================================ */
+
+/* Tighter section title */
+.section-title {
+  font-size: clamp(1.6rem, 3vw, 2.4rem) !important;
+}
+
+/* Art & writing: pink not grey */
+.art-intro {
+  color: hsl(330, 40%, 45%) !important;
+}
+#art-writing .section-title {
+  color: var(--foreground) !important;
+}
+
+/* Cap section inner width tighter */
+.section-inner {
+  max-width: 900px !important;
+}
+
+/* Reels grid: slightly smaller gap */
+.reels-grid {
+  gap: 1.5rem !important;
+  margin-top: 2.5rem !important;
+}
+
+/* About grid tighter */
+.about-grid {
+  margin-top: 2rem !important;
+  gap: 2.5rem !important;
+}
+
+/* Letter card: smaller text */
+.letter-text {
+  font-size: 0.9rem !important;
+  line-height: 1.75 !important;
+}
+
+/* Brand cards: tighter */
+.brand-cards {
+  margin-top: 3rem !important;
+  gap: 2.5rem !important;
+}
+
+/* Strategy breakdown: tighter top margin */
+.meocha-strategy-breakdown {
+  margin-top: 2.5rem !important;
+}
+.msb-title {
+  font-size: 1.2rem !important;
+}
+.msb-card-body {
+  font-size: 0.8rem !important;
+}
+.msb-grid {
+  gap: 1rem !important;
+}
+
+/* Posters grid: tighter */
+.posters-grid {
+  gap: 1.5rem !important;
+}
+
+/* Skills */
+.skills-heading {
+  font-size: 1.2rem !important;
+  margin-bottom: 1.5rem !important;
+}
+.pills-row {
+  gap: 0.5rem !important;
+  margin-bottom: 2rem !important;
+}
+.skill-pill {
+  font-size: 0.8rem !important;
+  padding: 0.4rem 0.85rem !important;
+}
+
+/* Project cards: tighter */
+.project-card-v2 {
+  margin-bottom: 1.25rem !important;
+}
+.project-content-v2 {
+  padding: 1.1rem 1.4rem 1.4rem !important;
+}
+.project-title {
+  font-size: 1.2rem !important;
+}
+.project-desc {
+  font-size: 0.8rem !important;
+}
+.project-rationale {
+  font-size: 0.74rem !important;
+}
+
+/* Modal: more compact */
+.modal-box {
+  padding: 1.25rem 1.5rem !important;
+}
+.modal-title {
+  font-size: 1.4rem !important;
+}
+
+/* Hero card: tighter */
+.hero-title {
+  font-size: clamp(1rem, 2.5vw, 1.35rem) !important;
+}
+
+/* Stamp photo smaller on desktop */
+@media (min-width: 768px) {
+  .stamp-photo { width: 220px !important; }
+}
+
+/* Contact section tighter */
+.contact-card {
+  padding: 1.5rem 2rem !important;
+}
+
+/* Poster labels smaller */
+.poster-title { font-size: 0.82rem !important; }
+.poster-desc  { font-size: 0.7rem !important; }
+
+/* Meocha caption */
+.meocha-caption { font-size: 0.68rem !important; }
+
+/* Art door buttons */
+.door-title    { font-size: 1.2rem !important; }
+.door-subtitle { font-size: 0.7rem !important; }
+
+/* Strategy section spacing */
+.strategy-section { margin-top: 3rem !important; padding-top: 2.5rem !important; }
