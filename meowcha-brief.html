@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meowcha Strategy Brief</title>
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --berry-plum:  #9C4A78;
+      --lime-green:  #C2DA88;
+      --petal-pink:  #FFDEF7;
+      --olive-dark:  #4B544A;
+      --pale-lime:   #E6F4C3;
+      --plum-light:  #e8c4d8;
+      --lime-border: #b5cc72;
+      --card-fill:   #fffcf9;
+      --rule:        rgba(75,84,74,0.09);
+      --font-display: 'Chewy', cursive;
+      --font-serif:   'Lora', serif;
+      --font-sans:    'DM Sans', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--pale-lime);
+      font-family: var(--font-serif);
+      color: var(--olive-dark);
+      min-height: 100vh;
+    }
+
+    .wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 64px 32px;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(48px); }
+      to   { opacity: 1; transform: translateY(0px); }
+    }
+    @keyframes slideFromLeft {
+      from { opacity: 0; transform: translateX(-56px); }
+      to   { opacity: 1; transform: translateX(0px); }
+    }
+    @keyframes slideFromRight {
+      from { opacity: 0; transform: translateX(56px); }
+      to   { opacity: 1; transform: translateX(0px); }
+    }
+    @keyframes slideUpSm {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0px); }
+    }
+
+    .eyebrow   { animation: slideUpSm     0.55s cubic-bezier(0.16,1,0.3,1) 0.00s both; }
+    .msb-title { animation: slideUpSm     0.55s cubic-bezier(0.16,1,0.3,1) 0.08s both; }
+    .msb-sub   { animation: slideUpSm     0.55s cubic-bezier(0.16,1,0.3,1) 0.14s both; }
+    .card-audience  { animation: slideFromLeft  0.65s cubic-bezier(0.16,1,0.3,1) 0.20s both; }
+    .card-objective { animation: slideFromRight 0.65s cubic-bezier(0.16,1,0.3,1) 0.26s both; }
+    .reject-card    { animation: slideUp        0.65s cubic-bezier(0.16,1,0.3,1) 0.22s both; }
+    .color-card:nth-child(1) { animation: slideUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.10s both; }
+    .color-card:nth-child(2) { animation: slideUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.18s both; }
+    .color-card:nth-child(3) { animation: slideUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.26s both; }
+    .color-card:nth-child(4) { animation: slideUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.34s both; }
+    .color-card:nth-child(5) { animation: slideUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.42s both; }
+    .type-card     { animation: slideUp   0.65s cubic-bezier(0.16,1,0.3,1) 0.20s both; }
+    .insight-strip { animation: slideUpSm 0.55s cubic-bezier(0.16,1,0.3,1) 0.26s both; }
+
+    .anim-done { transition: transform 0.28s ease, box-shadow 0.28s ease; }
+    .card:hover, .color-card:hover, .type-card:hover, .reject-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 40px rgba(75,84,74,0.11);
+    }
+
+    /* back link */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--berry-plum);
+      text-decoration: none;
+      margin-bottom: 36px;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    .back-link:hover { opacity: 1; }
+
+    .eyebrow {
+      display: inline-block;
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--berry-plum);
+      background: var(--plum-light);
+      border: 1px solid var(--plum-light);
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 14px;
+    }
+
+    .msb-title {
+      font-family: var(--font-display);
+      font-size: 38px;
+      color: var(--olive-dark);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .msb-title .accent { color: var(--berry-plum); }
+
+    .msb-sub {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 14px;
+      color: #6a7469;
+      line-height: 1.7;
+      max-width: 480px;
+      margin-bottom: 44px;
+    }
+
+    .row-2   { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    .row-full { margin-bottom: 14px; }
+    .color-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 14px; }
+
+    .card {
+      background: var(--card-fill);
+      border: 1px solid var(--rule);
+      border-radius: 18px;
+      padding: 28px;
+    }
+    .card-label {
+      font-family: var(--font-sans);
+      font-size: 9.5px;
+      font-weight: 500;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+      color: #8a9188;
+      margin-bottom: 13px;
+    }
+    .card h3 { font-family: var(--font-display); font-size: 21px; margin-bottom: 10px; color: var(--olive-dark); }
+    .card p { font-family: var(--font-serif); font-size: 13.5px; line-height: 1.75; color: #4e5d4c; }
+    .card p strong { font-weight: 500; color: var(--olive-dark); }
+    .card-audience  { border-top: 3px solid var(--berry-plum); }
+    .card-objective { border-top: 3px solid var(--lime-green); }
+
+    .reject-card {
+      background: var(--petal-pink);
+      border: 1px solid var(--plum-light);
+      border-radius: 18px;
+      padding: 28px 32px;
+    }
+    .reject-card h3 { font-family: var(--font-display); font-size: 21px; color: var(--berry-plum); margin-bottom: 18px; }
+    .reject-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .reject-item {
+      background: rgba(255,255,255,0.55);
+      border: 1px solid var(--plum-light);
+      border-radius: 12px;
+      padding: 16px 18px;
+    }
+    .reject-what {
+      font-family: var(--font-sans);
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--berry-plum);
+      margin-bottom: 5px;
+      text-decoration: line-through;
+      text-decoration-color: rgba(156,74,120,0.4);
+    }
+    .reject-why { font-family: var(--font-serif); font-size: 12.5px; line-height: 1.65; color: #5e4458; }
+
+    .color-card { background: var(--card-fill); border: 1px solid var(--rule); border-radius: 16px; overflow: hidden; }
+    .color-swatch { height: 64px; width: 100%; box-shadow: inset 0 0 0 1.5px rgba(0,0,0,0.08); }
+    .color-body { padding: 14px 14px 16px; }
+    .color-name { font-family: var(--font-display); font-size: 13.5px; margin-bottom: 2px; }
+    .color-hex { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 0.05em; color: #8a9188; margin-bottom: 8px; }
+    .color-desc { font-family: var(--font-serif); font-size: 11.5px; line-height: 1.6; color: #5a6358; }
+
+    .type-card {
+      background: var(--card-fill);
+      border: 1px solid var(--rule);
+      border-radius: 18px;
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+    .type-block { border-right: 1px solid var(--rule); padding-right: 32px; }
+    .type-sample-display { font-family: var(--font-display); font-size: 44px; line-height: 1; color: var(--berry-plum); margin-bottom: 6px; }
+    .type-sample-serif { font-family: var(--font-serif); font-style: italic; font-size: 24px; line-height: 1.2; color: var(--olive-dark); margin-bottom: 6px; }
+    .type-label { font-family: var(--font-sans); font-size: 9px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #8a9188; }
+    .type-rationale p { font-family: var(--font-serif); font-size: 13px; line-height: 1.78; color: #4e5d4c; }
+    .type-rationale p + p { margin-top: 10px; }
+
+    .insight-strip {
+      background: var(--lime-green);
+      border: 1px solid var(--lime-border);
+      border-radius: 14px;
+      padding: 22px 28px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .insight-label {
+      font-family: var(--font-sans);
+      font-size: 9.5px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--olive-dark);
+      white-space: nowrap;
+      padding-top: 3px;
+      opacity: 0.65;
+    }
+    .insight-text { font-family: var(--font-serif); font-size: 13px; line-height: 1.78; color: var(--olive-dark); }
+    .insight-text strong { font-weight: 500; }
+
+    @media (max-width: 700px) {
+      .row-2, .color-row    { grid-template-columns: 1fr; }
+      .reject-list          { grid-template-columns: 1fr; }
+      .type-card            { grid-template-columns: 1fr; }
+      .type-block           { border-right: none; border-bottom: 1px solid var(--rule); padding-right: 0; padding-bottom: 24px; }
+      .wrapper              { padding: 40px 20px; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <a href="index.html" class="back-link">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15,18 9,12 15,6"/>
+    </svg>
+    back to niah's house
+  </a>
+
+  <span class="eyebrow">Strategy Brief</span>
+  <h2 class="msb-title">Why <span class="accent">Meowcha</span> works.</h2>
+  <p class="msb-sub">Not just what it looks like. What it understood about the people it was made for.</p>
+
+  <div class="row-2">
+    <div class="card card-audience">
+      <div class="card-label">Brand Audience</div>
+      <h3>The burnout crowd.</h3>
+      <p>Millennials and Gen Z in cities. They scroll slow-living accounts between back-to-back meetings and spend Sunday dreading Monday. They don't need more fun. <strong>They need somewhere that asks nothing of them.</strong> No performance. No output. Just time that belongs to them.</p>
+    </div>
+    <div class="card card-objective">
+      <div class="card-label">Brand Objective</div>
+      <h3>A safe space to just be.</h3>
+      <p>Not a café that happens to have cats. <strong>A community built around rest and presence.</strong> Meowcha is where the burnout crowd exhales. The whole brand — colors, fonts, tone — does the same job: telling the right person it's okay to stop here.</p>
+    </div>
+  </div>
+
+  <div class="row-full">
+    <div class="reject-card">
+      <h3>What we said no to, and why.</h3>
+      <div class="reject-list">
+        <div class="reject-item">
+          <div class="reject-what">Sharp sans-serifs (Inter, Helvetica)</div>
+          <div class="reject-why">They're the fonts of apps, decks, dashboards. One glance and it reads "work." That's the exact feeling Meowcha exists to undo.</div>
+        </div>
+        <div class="reject-item">
+          <div class="reject-what">Pure white backgrounds (#FFFFFF)</div>
+          <div class="reject-why">Clinical, bright, office-screen energy. White is what people stare at all week. The palette had to feel nothing like that.</div>
+        </div>
+        <div class="reject-item">
+          <div class="reject-what">Cold grays and blues</div>
+          <div class="reject-why">They read like Slack, Notion, every productivity tool in the world. The opposite of what this brand is for.</div>
+        </div>
+        <div class="reject-item">
+          <div class="reject-what">Rigid geometric layouts</div>
+          <div class="reject-why">Hard corners, grid-perfect structure — feels like a pitch deck. A place that wants you to slow down shouldn't look like it's trying to impress someone.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="color-row">
+    <div class="color-card">
+      <div class="color-swatch" style="background:#9C4A78;"></div>
+      <div class="color-body">
+        <div class="color-name" style="color:#9C4A78;">Berry Plum</div>
+        <div class="color-hex">#9C4A78</div>
+        <div class="color-desc">The warmth the palette is built around. Like the feeling of being somewhere safe and familiar. Sits in the logo and stays with you.</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#C2DA88;"></div>
+      <div class="color-body">
+        <div class="color-name" style="color:#5e7a2a;">Lime Green</div>
+        <div class="color-hex">#C2DA88</div>
+        <div class="color-desc">New growth. Saplings specifically. Not mature, not formal. Just something quietly alive and getting there.</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#FFDEF7;"></div>
+      <div class="color-body">
+        <div class="color-name" style="color:#b05590;">Petal Pink</div>
+        <div class="color-hex">#FFDEF7</div>
+        <div class="color-desc">The inside of a cat's ear. That exact shade. Light enough for backgrounds, still warm enough to feel like something.</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#4B544A;"></div>
+      <div class="color-body">
+        <div class="color-name" style="color:#4B544A;">Olive Charcoal</div>
+        <div class="color-hex">#4B544A</div>
+        <div class="color-desc">The anchor. Grounded without going corporate or cold. Not black, not a boardroom color. Earthy enough to belong here.</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#E6F4C3;"></div>
+      <div class="color-body">
+        <div class="color-name" style="color:#5e7a2a;">Pale Lime</div>
+        <div class="color-hex">#E6F4C3</div>
+        <div class="color-desc">The exhale color. Page backgrounds, quiet fills. Everywhere nothing needs to demand attention.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row-full">
+    <div class="type-card">
+      <div class="type-block">
+        <div class="type-sample-display">Meowcha</div>
+        <div class="type-label" style="margin-bottom:18px;">Chewy — display</div>
+        <div class="type-sample-serif">A place to just be.</div>
+        <div class="type-label">Lora — body, italic</div>
+      </div>
+      <div class="type-rationale">
+        <div class="card-label" style="margin-bottom:12px;">Typography Rationale</div>
+        <p><strong>Chewy</strong> for display. The rounded, nibbly letterforms were chosen because they remind you of a chubby cat's tail. That softness is not childish. It's deliberately not trying to be sharp or impressive. Sharp means corporate. Meowcha is the opposite.</p>
+        <p><strong>Lora</strong> for body. A serif that reads warm, not formal. Academic serifs feel like textbooks. Lora feels like a note someone actually wrote. Together the two fonts say: this brand has character, and it's not in a hurry.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight-strip">
+    <div class="insight-label">Core Insight</div>
+    <div class="insight-text">
+      People don't follow cafes. They follow <strong>feelings they want more of.</strong> Every Meowcha post leads with that feeling first, product second. The content doesn't look like marketing because it's not trying to sell anything. It's giving people permission to rest. That's what makes them come back.
+    </div>
+  </div>
+
+</div>
+<script>
+  setTimeout(() => {
+    document.querySelectorAll('.card, .color-card, .type-card, .reject-card')
+      .forEach(el => el.classList.add('anim-done'));
+  }, 1100);
+</script>
+</body>
+</html>
