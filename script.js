@@ -120,7 +120,7 @@ function playSparkle() {
 (function initNav() {
   const nav = document.getElementById('floating-nav');
   const navBtns = document.querySelectorAll('.nav-btn');
-  const sections = ['welcome', 'about', 'work', 'projects', 'contact'];
+  const sections = ['welcome', 'about', 'spec-work', 'reels', 'projects', 'creative-work', 'contact'];
 
   // Show/hide nav on scroll
   window.addEventListener('scroll', () => {
@@ -224,10 +224,17 @@ function closeModal(id) {
 function openReelsModal(title, setKey) {
   const container = document.getElementById('reels-videos-container');
   const titleEl   = document.getElementById('modal-reels-title');
+  const subtitleEl = document.querySelector('#modal-reels .modal-subtitle');
   if (!container || !titleEl) return;
 
   titleEl.textContent = title;
   container.innerHTML = '';
+
+  const reelDetails = {
+    petgrooming: 'Client: YESSAYSDOGGIE · Role: turned the grooming process into reels; built a recurring series, content calendar, and visual tone guide · Result: reels reached 1.3K+ likes.',
+    handicrafts: 'Client: Pashoopakshee · Role: process reels, product carousels, Pinterest board strategy and management · Result: content calendar across platforms.'
+  };
+  if (subtitleEl) subtitleEl.textContent = reelDetails[setKey] || 'Client: @niaxbones · Independent art and poetry reels.';
 
   const videos = reelSets[setKey] || [];
   videos.forEach(src => {
@@ -296,7 +303,6 @@ function openRoomModal(room) {
             </div>
           </div>
         `).join('')}
-        <p class="art-coming-soon">share your artwork to fill these lace frames</p>
       </div>
     `;
   } else {
