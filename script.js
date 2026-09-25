@@ -272,6 +272,12 @@ function openRoomModal(room) {
     subtitleEl.textContent = 'a small gallery, soft and slow';
     const artworks = [
       {
+        title: 'Fishy with a Message',
+        caption: 'An oil-pastel fish drawing, animated by me.',
+        src: 'assets/fishy-with-a-message.mp4',
+        type: 'video'
+      },
+      {
         title: 'Vulning Pelican',
         src: 'https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776887182/WhatsApp_Image_2026-04-22_at_15.59.34_nfjxzo.jpg'
       },
@@ -292,9 +298,9 @@ function openRoomModal(room) {
         ${artworks.map((a) => a ? `
           <figure class="art-frame">
             <div class="art-frame-inner has-image"${a.fitFrame ? ' style="aspect-ratio:auto;height:auto;"' : ''}>
-              <img src="${escapeAttr(a.src)}" alt="${escapeAttr(a.title)}" loading="lazy"${a.fitFrame ? ' style="width:100%;height:auto;object-fit:unset;"' : ''} />
+              ${a.type === 'video' ? `<video controls loop playsinline preload="metadata" aria-label="${escapeAttr(a.title)}"><source src="${escapeAttr(a.src)}" type="video/mp4" />Your browser does not support video playback.</video>` : `<img src="${escapeAttr(a.src)}" alt="${escapeAttr(a.title)}" loading="lazy"${a.fitFrame ? ' style="width:100%;height:auto;object-fit:unset;"' : ''} />`}
             </div>
-            ${a.noCaption ? '' : `<figcaption class="art-caption">${escapeAttr(a.title)}</figcaption>`}
+            ${a.noCaption ? '' : `<figcaption class="art-caption">${escapeAttr(a.caption || a.title)}</figcaption>`}
           </figure>
         ` : `
           <div class="art-frame">
@@ -302,6 +308,33 @@ function openRoomModal(room) {
               <p>art piece coming soon</p>
             </div>
           </div>
+        `).join('')}
+      </div>
+    `;
+  } else if (room === 'featured') {
+    titleEl.textContent = 'featured work';
+    subtitleEl.textContent = 'poems and art published and featured across literary platforms';
+    const features = [
+      { title: 'Poem share', credit: 'Shared by @redrosethorns', src: 'assets/feature-redrosethorns.jpeg' },
+      { title: 'Aphrodite', credit: 'Featured by @zine_pulses', src: 'assets/feature-zine-pulses.jpeg' },
+      { title: 'Russian Roulette', credit: 'Featured by @tapintopoetry', src: 'assets/feature-tap-into-poetry.jpeg' },
+      { title: 'Love Came Home', credit: 'Featured by @thefawnliterary', src: 'assets/feature-fawn-literary.jpeg' },
+      { title: 'Red Chords', credit: 'Published by Vagabond City · August 17, 2026', src: 'assets/feature-vagabond-city.jpeg', href: 'https://vagabondcitylit.com/2026/08/17/red-chords-by-ananiah-jacob/' }
+    ];
+    const escapeFeature = (s) => String(s).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    content.innerHTML = `
+      <div class="featured-grid">
+        ${features.map((f) => `
+          <figure class="featured-proof">
+            <button type="button" class="featured-proof-button" onclick="openPosterModal('${escapeFeature(f.src)}','${escapeFeature(f.title)}')" aria-label="Enlarge proof: ${escapeFeature(f.title)}">
+              <img src="${escapeFeature(f.src)}" alt="Screenshot showing ${escapeFeature(f.title)} ${escapeFeature(f.credit)}" loading="lazy" />
+            </button>
+            <figcaption class="featured-proof-caption">
+              <strong>${escapeFeature(f.title)}</strong>
+              <span>${escapeFeature(f.credit)}</span>
+              ${f.href ? `<a href="${escapeFeature(f.href)}" target="_blank" rel="noopener noreferrer">Read Red Chords →</a>` : ''}
+            </figcaption>
+          </figure>
         `).join('')}
       </div>
     `;
