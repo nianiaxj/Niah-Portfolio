@@ -2,23 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Meowcha Strategy Brief</title>
-  <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --berry-plum: #9C4A78;
-      --lime-green: #C2DA88;
-      --petal-pink: #FFDEF7;
-      --olive-dark: #4B544A;
-      --pale-lime: #E6F4C3;
-      --plum-light: #e8c4d8;
+      --berry-plum:  #9C4A78;
+      --lime-green:  #C2DA88;
+      --petal-pink:  #FFDEF7;
+      --olive-dark:  #4B544A;
+      --pale-lime:   #E6F4C3;
+      --plum-light:  #e8c4d8;
       --lime-border: #b5cc72;
-      --card-fill: #fffcf9;
-      --rule: rgba(75,84,74,0.09);
+      --card-fill:   #fffcf9;
+      --rule:        rgba(75,84,74,0.09);
       --font-display: 'Chewy', cursive;
-      --font-serif: 'Lora', serif;
-      --font-sans: 'DM Sans', sans-serif;
+      --font-serif:   'Lora', serif;
+      --font-sans:    'DM Sans', sans-serif;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -38,33 +38,33 @@
 
     @keyframes slideUp {
       from { opacity: 0; transform: translateY(48px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0px); }
     }
     @keyframes slideFromLeft {
       from { opacity: 0; transform: translateX(-56px); }
-      to { opacity: 1; transform: translateX(0); }
+      to   { opacity: 1; transform: translateX(0px); }
     }
     @keyframes slideFromRight {
       from { opacity: 0; transform: translateX(56px); }
-      to { opacity: 1; transform: translateX(0); }
+      to   { opacity: 1; transform: translateX(0px); }
     }
     @keyframes slideUpSm {
       from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0px); }
     }
 
-    .eyebrow { animation: slideUpSm 0.55s cubic-bezier(0.16,1,0.3,1) 0s both; }
-    .msb-title { animation: slideUpSm 0.55s cubic-bezier(0.16,1,0.3,1) 0.08s both; }
-    .msb-sub { animation: slideUpSm 0.55s cubic-bezier(0.16,1,0.3,1) 0.14s both; }
-    .card-audience { animation: slideFromLeft 0.65s cubic-bezier(0.16,1,0.3,1) 0.20s both; }
+    .eyebrow   { animation: slideUpSm     0.55s cubic-bezier(0.16,1,0.3,1) 0.00s both; }
+    .msb-title { animation: slideUpSm     0.55s cubic-bezier(0.16,1,0.3,1) 0.08s both; }
+    .msb-sub   { animation: slideUpSm     0.55s cubic-bezier(0.16,1,0.3,1) 0.14s both; }
+    .card-audience  { animation: slideFromLeft  0.65s cubic-bezier(0.16,1,0.3,1) 0.20s both; }
     .card-objective { animation: slideFromRight 0.65s cubic-bezier(0.16,1,0.3,1) 0.26s both; }
-    .reject-card { animation: slideUp 0.65s cubic-bezier(0.16,1,0.3,1) 0.22s both; }
+    .reject-card    { animation: slideUp        0.65s cubic-bezier(0.16,1,0.3,1) 0.22s both; }
     .color-card:nth-child(1) { animation: slideUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.10s both; }
     .color-card:nth-child(2) { animation: slideUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.18s both; }
     .color-card:nth-child(3) { animation: slideUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.26s both; }
     .color-card:nth-child(4) { animation: slideUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.34s both; }
     .color-card:nth-child(5) { animation: slideUp 0.6s cubic-bezier(0.16,1,0.3,1) 0.42s both; }
-    .type-card { animation: slideUp 0.65s cubic-bezier(0.16,1,0.3,1) 0.20s both; }
+    .type-card     { animation: slideUp   0.65s cubic-bezier(0.16,1,0.3,1) 0.20s both; }
     .insight-strip { animation: slideUpSm 0.55s cubic-bezier(0.16,1,0.3,1) 0.26s both; }
 
     .anim-done { transition: transform 0.28s ease, box-shadow 0.28s ease; }
@@ -73,6 +73,7 @@
       box-shadow: 0 14px 40px rgba(75,84,74,0.11);
     }
 
+    /* back link */
     .back-link {
       display: inline-flex;
       align-items: center;
@@ -122,7 +123,7 @@
       margin-bottom: 44px;
     }
 
-    .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    .row-2   { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
     .row-full { margin-bottom: 14px; }
     .color-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 14px; }
 
@@ -144,7 +145,7 @@
     .card h3 { font-family: var(--font-display); font-size: 21px; margin-bottom: 10px; color: var(--olive-dark); }
     .card p { font-family: var(--font-serif); font-size: 13.5px; line-height: 1.75; color: #4e5d4c; }
     .card p strong { font-weight: 500; color: var(--olive-dark); }
-    .card-audience { border-top: 3px solid var(--berry-plum); }
+    .card-audience  { border-top: 3px solid var(--berry-plum); }
     .card-objective { border-top: 3px solid var(--lime-green); }
 
     .reject-card {
@@ -171,7 +172,6 @@
       text-decoration-color: rgba(156,74,120,0.4);
     }
     .reject-why { font-family: var(--font-serif); font-size: 12.5px; line-height: 1.65; color: #5e4458; }
-
     .wireframe-card { background: var(--card-fill); border: 1px solid var(--rule); border-radius: 16px; padding: 20px; margin-bottom: 14px; }
     .wireframe-card h3 { font-family: var(--font-display); font-size: 21px; color: var(--berry-plum); margin-bottom: 8px; }
     .wireframe-card p { font-family: var(--font-serif); font-size: 13px; line-height: 1.65; margin-bottom: 16px; }
@@ -238,12 +238,12 @@
     .insight-text strong { font-weight: 500; }
 
     @media (max-width: 700px) {
-      .row-2, .color-row { grid-template-columns: 1fr; }
-      .wireframe-gallery { grid-template-columns: 1fr; }
-      .reject-list { grid-template-columns: 1fr; }
-      .type-card { grid-template-columns: 1fr; }
-      .type-block { border-right: none; border-bottom: 1px solid var(--rule); padding-right: 0; padding-bottom: 24px; }
-      .wrapper { padding: 40px 20px; }
+      .row-2, .color-row    { grid-template-columns: 1fr; }
+      .wireframe-gallery   { grid-template-columns: 1fr; }
+      .reject-list          { grid-template-columns: 1fr; }
+      .type-card            { grid-template-columns: 1fr; }
+      .type-block           { border-right: none; border-bottom: 1px solid var(--rule); padding-right: 0; padding-bottom: 24px; }
+      .wrapper              { padding: 40px 20px; }
     }
   </style>
 </head>
@@ -419,3 +419,4 @@
 </script>
 </body>
 </html>
+
