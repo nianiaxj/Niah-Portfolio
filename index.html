@@ -246,7 +246,17 @@
               <div class="project-badge">Concept Campaign</div>
               <h3>Bonkers Corner: Play Again</h3>
               <p>A speculative 12-month cultural platform built around one insight: India&apos;s burnout generation does not miss childhood so much as the permission to play. The campaign brings together teaser storytelling, a play-personality quiz, pop-ups for grown-ups, collectible drops, and recurring Play Nights.</p>
-              <a href="assets/assets/bonkers_play_again.pptx" target="_blank" rel="noopener noreferrer" class="project-link">Open campaign deck →</a>
+              <details class="bonkers-deck-details">
+                <summary class="project-link">View the campaign on this page ↓</summary>
+                <div class="bonkers-deck-frame">
+                  <iframe
+                    title="Bonkers Corner Play Again campaign deck"
+                    src="https://view.officeapps.live.com/op/embed.aspx?src=https%3A%2F%2Fnianiaxj.github.io%2FNiah-Portfolio%2Fassets%2Fassets%2Fbonkers_play_again.pptx"
+                    loading="lazy"
+                    allowfullscreen></iframe>
+                </div>
+                <a class="bonkers-deck-fallback" href="https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fnianiaxj.github.io%2FNiah-Portfolio%2Fassets%2Fassets%2Fbonkers_play_again.pptx" target="_blank" rel="noopener noreferrer">Open the deck in a new tab ↗</a>
+              </details>
             </div>
           </article>
 
@@ -364,16 +374,25 @@
             <div class="wood-frame brand-card-inner" style="position:relative;">
               <div class="frame-nail"></div>
               <div class="frame-nail-line"></div>
-              <div class="brand-pattern brand-pattern-culture"><span>CULTURE CAREERS</span><strong>social<br />stories</strong><small>social media intern</small></div>
+              <div class="brand-pattern brand-pattern-culture" aria-hidden="true">
+                <svg class="culture-careers-icon" viewBox="0 0 120 120" role="img">
+                  <path d="M24 43h72a8 8 0 0 1 8 8v43a8 8 0 0 1-8 8H24a8 8 0 0 1-8-8V51a8 8 0 0 1 8-8Z" fill="#fffafd" stroke="currentColor" stroke-width="5"/>
+                  <path d="M42 43V30a8 8 0 0 1 8-8h20a8 8 0 0 1 8 8v13M16 61h88M52 61v9h16v-9" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="m91 15 3.5 8.5L103 27l-8.5 3.5L91 39l-3.5-8.5L79 27l8.5-3.5Z" fill="#e6a4c0" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
               <div class="brand-card-copy">
                 <h3 class="brand-card-title">Culture Careers</h3>
-                <p class="brand-card-desc">India’s curated job board and community for creative and cultural work, connecting creative people with jobs, gigs, residencies, and grants.</p>
-                <p class="brand-card-desc">I owned their Instagram, creating posts across reels, carousels, and captions.</p>
+                <p class="brand-card-desc">Instagram storytelling across reels, carousels, and captions.</p>
                 <div class="culture-work-gallery" aria-label="Culture Careers Instagram work samples">
-                  <img src="assets/assets/culture-careers-reel-share.jpeg" alt="Culture Careers story sharing a creative opportunity and thanking the account for a featured work" loading="lazy" />
-                  <img src="assets/assets/culture-careers-instagram-grid.jpeg" alt="Grid of Culture Careers Instagram posts about creative jobs, art galleries, and career advice" loading="lazy" />
+                  <button type="button" class="culture-work-trigger" onclick="openPosterModal('assets/assets/culture-careers-reel-share.jpeg','Culture Careers Instagram story')" aria-label="View Culture Careers Instagram story fullscreen">
+                    <img src="assets/assets/culture-careers-reel-share.jpeg" alt="Culture Careers Instagram story sharing a creative opportunity" loading="lazy" />
+                  </button>
+                  <button type="button" class="culture-work-trigger" onclick="openPosterModal('assets/assets/culture-careers-instagram-grid.jpeg','Culture Careers Instagram posts')" aria-label="View Culture Careers Instagram post grid fullscreen">
+                    <img src="assets/assets/culture-careers-instagram-grid.jpeg" alt="Culture Careers Instagram posts about jobs, galleries, and career advice" loading="lazy" />
+                  </button>
                 </div>
-                <a class="brand-card-cta" href="https://www.instagram.com/culturecareersworld/" target="_blank" rel="noopener noreferrer">view Culture Careers on Instagram →</a>
+                <a class="brand-card-cta" href="https://www.instagram.com/culturecareersworld/" target="_blank" rel="noopener noreferrer">click to watch the reels →</a>
               </div>
             </div>
           </article>
@@ -836,3 +855,4 @@ ion>
 <script src="script.js"></script>
 </body>
 </html>
+
