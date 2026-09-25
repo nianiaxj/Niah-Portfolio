@@ -274,8 +274,9 @@ function openRoomModal(room) {
       {
         title: 'Fishy with a Message',
         caption: 'An oil-pastel fish drawing, animated by me.',
-        src: 'assets/fishy-with-a-message.mp4',
-        type: 'video'
+        src: 'assets/assets/fishy-with-a-message.mp4',
+        type: 'video',
+        poster: 'assets/assets/fishy-with-a-message-poster.png'
       },
       {
         title: 'Vulning Pelican',
@@ -288,7 +289,6 @@ function openRoomModal(room) {
       {
         title: 'Red Chords',
         src: 'https://res.cloudinary.com/dg1zcff2r/image/upload/q_auto/f_auto/v1776887053/WhatsApp_Image_2026-04-09_at_11.58.19_1_kdokil.jpg',
-        noCaption: true,
         fitFrame: true
       }
     ];
@@ -298,7 +298,7 @@ function openRoomModal(room) {
         ${artworks.map((a) => a ? `
           <figure class="art-frame">
             <div class="art-frame-inner has-image"${a.fitFrame ? ' style="aspect-ratio:auto;height:auto;"' : ''}>
-              ${a.type === 'video' ? `<video controls loop playsinline preload="metadata" aria-label="${escapeAttr(a.title)}"><source src="${escapeAttr(a.src)}" type="video/mp4" />Your browser does not support video playback.</video>` : `<img src="${escapeAttr(a.src)}" alt="${escapeAttr(a.title)}" loading="lazy"${a.fitFrame ? ' style="width:100%;height:auto;object-fit:unset;"' : ''} />`}
+              ${a.type === 'video' ? `<video controls loop playsinline preload="metadata" poster="${escapeAttr(a.poster)}" aria-label="${escapeAttr(a.title)}"><source src="${escapeAttr(a.src)}" type="video/mp4" />Your browser does not support video playback. <img src="${escapeAttr(a.poster)}" alt="${escapeAttr(a.title)}" /></video>` : `<img src="${escapeAttr(a.src)}" alt="${escapeAttr(a.title)}" loading="lazy"${a.fitFrame ? ' style="width:100%;height:auto;object-fit:unset;"' : ''} />`}
             </div>
             ${a.noCaption ? '' : `<figcaption class="art-caption">${escapeAttr(a.caption || a.title)}</figcaption>`}
           </figure>
@@ -315,11 +315,11 @@ function openRoomModal(room) {
     titleEl.textContent = 'featured work';
     subtitleEl.textContent = 'poems and art published and featured across literary platforms';
     const features = [
-      { title: 'Poem share', credit: 'Shared by @redrosethorns', src: 'assets/feature-redrosethorns.jpeg' },
-      { title: 'Aphrodite', credit: 'Featured by @zine_pulses', src: 'assets/feature-zine-pulses.jpeg' },
-      { title: 'Russian Roulette', credit: 'Featured by @tapintopoetry', src: 'assets/feature-tap-into-poetry.jpeg' },
-      { title: 'Love Came Home', credit: 'Featured by @thefawnliterary', src: 'assets/feature-fawn-literary.jpeg' },
-      { title: 'Red Chords', credit: 'Published by Vagabond City · August 17, 2026', src: 'assets/feature-vagabond-city.jpeg', href: 'https://vagabondcitylit.com/2026/08/17/red-chords-by-ananiah-jacob/' }
+      { title: 'Poem share', credit: 'Shared by @redrosethorns', src: 'assets/assets/feature-redrosethorns.jpeg' },
+      { title: 'Aphrodite', credit: 'Featured by @zine_pulses', src: 'assets/assets/feature-zine-pulses.jpeg' },
+      { title: 'Russian Roulette', credit: 'Featured by @tapintopoetry', src: 'assets/assets/feature-tap-into-poetry.jpeg' },
+      { title: 'Love Came Home', credit: 'Featured by @thefawnliterary', src: 'assets/assets/feature-fawn-literary.jpeg' },
+      { title: 'Red Chords', credit: 'Published by Vagabond City · August 17, 2026', src: 'assets/assets/feature-vagabond-city.jpeg', href: 'https://vagabondcitylit.com/2026/08/17/red-chords-by-ananiah-jacob/' }
     ];
     const escapeFeature = (s) => String(s).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     content.innerHTML = `
@@ -468,3 +468,4 @@ love came home to me`
 document.querySelector('footer')?.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+
