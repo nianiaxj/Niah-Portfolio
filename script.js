@@ -120,7 +120,7 @@ function playSparkle() {
 (function initNav() {
   const nav = document.getElementById('floating-nav');
   const navBtns = document.querySelectorAll('.nav-btn');
-  const sections = ['welcome', 'about', 'spec-work', 'reels', 'projects', 'creative-work', 'contact'];
+  const sections = ['welcome', 'about', 'spec-work', 'reels', 'projects', 'angel-demons', 'creative-work', 'contact'];
 
   // Show/hide nav on scroll
   window.addEventListener('scroll', () => {
