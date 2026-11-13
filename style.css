@@ -2005,9 +2005,15 @@ footer .footer-copy {
 .projects-grid .project-link { background: #f8dce6; border-color: #edbfd0; }
 .projects-grid .project-future { grid-column: 1 / -1; margin-top: 0 !important; }
 .tool-pill { display: inline-flex; align-items: center; gap: 0.45rem; }
-.tool-logo { width: 1.15rem; height: 1.15rem; display: inline-grid; place-items: center; flex: 0 0 auto; border-radius: 0.32rem; color: #fff; font: 800 0.58rem/1 var(--font-sans); letter-spacing: -0.04em; }
-.tool-figma { color: #fff; background: linear-gradient(135deg,#f24e1e 0 33%,#ff7262 33% 50%,#a259ff 50% 67%,#1abcfe 67% 84%,#0acf83 84%); }
-.tool-veo { color: #fff; background: linear-gradient(135deg,#4285f4,#a142f4); }
-.tool-elevenlabs { color: #fff; background: #171717; letter-spacing: -0.12em; }
-.tool-n8n { color: #fff; background: #ea4b71; font-size: 0.46rem; }
-.tool-make { color: #fff; background: linear-gradient(135deg,#6a42e8,#f0447c 65%,#ffb13b); }
+.tool-logo { width: 1.15rem; height: 1.15rem; display: inline-grid; place-items: center; flex: 0 0 auto; border-radius: 0.32rem; color: var(--primary); background: transparent; font: 800 0.58rem/1 var(--font-sans); letter-spacing: -0.04em; }
+.tool-figma, .tool-veo, .tool-elevenlabs, .tool-n8n, .tool-make { color: var(--primary); background: transparent; }
+.angel-demons-feature { display:grid; grid-template-columns:minmax(0,1.05fr) minmax(15rem,0.85fr); gap:1rem; padding:1rem; overflow:hidden; border:1px solid var(--border); border-radius:1.5rem; background:var(--card); box-shadow:0 8px 28px rgba(0,0,0,.08); }
+.angel-demons-preview { min-height:19rem; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.75rem; padding:2rem; border-radius:1rem; text-align:center; color:#fff8fc; background:radial-gradient(ellipse at 20% 20%,rgba(255,226,244,.32),transparent 38%),radial-gradient(ellipse at 80% 80%,rgba(142,102,178,.55),transparent 42%),linear-gradient(135deg,#35233e,#171322 65%,#3c2547); }
+.angel-demons-kicker { font-size:.7rem; letter-spacing:.25em; text-transform:uppercase; opacity:.8; }
+.angel-demons-title { font:600 clamp(2.3rem,6vw,4.5rem)/1 var(--font-serif); }
+.angel-demons-title span { font-style:italic; font-size:.6em; color:#f3c4d6; }
+.angel-demons-note { font:italic 1rem var(--font-serif); opacity:.8; }
+.angel-demons-copy { display:flex; flex-direction:column; align-items:flex-start; justify-content:center; padding:1.5rem; }
+.angel-demons-video { grid-column:1/-1; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.6fr); align-items:center; gap:1rem; padding:1rem 1.25rem; border-radius:1rem; background:rgba(255,255,255,.55); color:var(--muted-foreground); font-size:.9rem; }
+.angel-demons-video video { display:block; width:100%; max-height:22rem; border-radius:.75rem; background:#21172a; }
+@media(max-width:700px) { .angel-demons-feature { grid-template-columns:1fr; } .angel-demons-video { grid-template-columns:1fr; } .angel-demons-preview { min-height:15rem; } }
